@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public MusicController musicController;
 
     public GameObject buttonPrefab;
+    public GameObject UICharacter;
     public Text scoreLabel;
     public string gameDataFileName;
     public float gameSpeed;
@@ -101,6 +102,7 @@ public class GameController : MonoBehaviour
     public void CreateButton(float startTime, float[] startPos, bool isDrag, float[] endPos, int buttonNum)
     {
         GameObject button = Instantiate(buttonPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+
         button.transform.SetParent(GameObject.FindGameObjectWithTag("GameController").transform, false);
         ButtonController buttonController = button.GetComponent<ButtonController>();
 
@@ -112,6 +114,16 @@ public class GameController : MonoBehaviour
 
         buttonController.duration = gameSpeed;
         buttonController.InitializeButton(startTime, startPos[0], startPos[1], isDrag, endPos[0], endPos[1]);
+
+        //MOVE THE UI CHARACTER
+        UICharacter.transform.position = new Vector3(
+                                            button.transform.position.x, 
+                                            UICharacter.transform.position.y, 
+                                            UICharacter.transform.position.z);
+    }
+
+    public void MoveUICharacter(){
+
     }
 
     public void OnGameButtonClick(ButtonController button)
