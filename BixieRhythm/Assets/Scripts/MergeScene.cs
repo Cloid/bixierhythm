@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class MergeScene : MonoBehaviour
 {
     private void Awake() {
-       SceneManager.LoadScene(2,LoadSceneMode.Additive);
+       SceneManager.LoadScene(1,LoadSceneMode.Additive);
    }
 }
