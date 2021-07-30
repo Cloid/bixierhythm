@@ -94,19 +94,19 @@ public class LightScript : MonoBehaviour
 
     public void darkenMiss()
     {
-        if (top.color.a > -1)
+        if (top.color.a <= 1)
         {
             Color temp = top.color;
             temp.a += 0.5f;
             top.color = temp;
         }
-        if (middle.color.a > -1)
+        if (middle.color.a <= 1)
         {
             Color temp = middle.color;
             temp.a += 0.5f;
             middle.color = temp;
         }
-        if (bottom.color.a > -1)
+        if (bottom.color.a <= 1)
         {
             Color temp = bottom.color;
             temp.a += 0.5f;
