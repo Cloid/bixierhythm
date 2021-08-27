@@ -168,7 +168,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.38888884, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -301,6 +301,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114726257095088664, guid: d8fb1a0528c7a6349b4532c96c7875ec, type: 3}
+      propertyPath: clipName
+      value: yoshi
+      objectReference: {fileID: 0}
     - target: {fileID: 114887869495966874, guid: d8fb1a0528c7a6349b4532c96c7875ec, type: 3}
       propertyPath: gameSpeed
       value: 1500
@@ -311,7 +315,7 @@ PrefabInstance:
       objectReference: {fileID: 2056211632}
     - target: {fileID: 114887869495966874, guid: d8fb1a0528c7a6349b4532c96c7875ec, type: 3}
       propertyPath: gameDataFileName
-      value: TESTSONG1.json
+      value: 5_Yoshi.json
       objectReference: {fileID: 0}
     - target: {fileID: 224467021917766850, guid: d8fb1a0528c7a6349b4532c96c7875ec, type: 3}
       propertyPath: m_Pivot.x
@@ -685,7 +689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2056211633
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,90 @@
+osu file format v14
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: -1
+Countdown: 0
+SampleSet: Normal
+StackLeniency: 0.7
+Mode: 0
+LetterboxInBreaks: 0
+WidescreenStoryboard: 0
+
+[Editor]
+DistanceSpacing: 1.2
+BeatDivisor: 8
+GridSize: 4
+TimelineZoom: 1
+
+[Metadata]
+Title:yoshi
+TitleUnicode:yoshi
+Artist:yoshi
+ArtistUnicode:yoshi
+Creator:flylikecookies
+Version:
+Source:
+Tags:
+BeatmapID:0
+BeatmapSetID:-1
+
+[Difficulty]
+HPDrainRate:5
+CircleSize:5
+OverallDifficulty:5
+ApproachRate:5
+SliderMultiplier:1.2
+SliderTickRate:1
+
+[Events]
+//Background and Video events
+//Break Periods
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Layer 4 (Overlay)
+//Storyboard Sound Samples
+
+[TimingPoints]
+0,500,4,1,0,100,1,0
+
+
+[HitObjects]
+62,90,10250,1,0,0:0:0:0:
+37,186,12500,5,0,0:0:0:0:
+68,260,12750,1,0,0:0:0:0:
+91,211,13000,1,0,0:0:0:0:
+93,150,13250,1,0,0:0:0:0:
+110,83,13500,1,0,0:0:0:0:
+43,87,14000,1,0,0:0:0:0:
+459,308,17250,5,0,0:0:0:0:
+461,238,17375,1,0,0:0:0:0:
+450,162,17625,1,0,0:0:0:0:
+429,89,17875,1,0,0:0:0:0:
+429,89,20375,5,0,0:0:0:0:
+434,139,20500,1,0,0:0:0:0:
+438,235,20875,1,0,0:0:0:0:
+435,276,21000,1,0,0:0:0:0:
+389,255,21250,5,0,0:0:0:0:
+388,207,21500,1,0,0:0:0:0:
+405,136,21750,1,0,0:0:0:0:
+427,72,22000,1,0,0:0:0:0:
+474,98,22500,1,0,0:0:0:0:
+474,175,22750,1,0,0:0:0:0:
+39,313,24812,5,0,0:0:0:0:
+100,288,25000,1,0,0:0:0:0:
+74,246,25250,1,0,0:0:0:0:
+123,214,25500,1,0,0:0:0:0:
+73,175,25750,1,0,0:0:0:0:
+27,126,26562,1,0,0:0:0:0:
+78,101,27062,1,0,0:0:0:0:
+142,79,27562,1,0,0:0:0:0:
+451,60,28000,1,0,0:0:0:0:
+385,98,28187,1,0,0:0:0:0:
+475,147,28500,1,0,0:0:0:0:
+396,172,28687,1,0,0:0:0:0:
+465,223,29312,1,0,0:0:0:0:
+411,250,29500,1,0,0:0:0:0:
+451,292,29687,1,0,0:0:0:0:
