@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public LightScript lightScript;
     public MusicController musicController;
 
     public GameObject buttonPrefab;
@@ -128,8 +128,25 @@ public class GameController : MonoBehaviour
 
     public void OnGameButtonClick(ButtonController button)
     {
-        this.gameScore += (Mathf.RoundToInt((button.buttonScore * 1000) / 100) * 100);
+        int buttonS = (Mathf.RoundToInt((button.buttonScore * 1000) / 100) * 100);
+        this.gameScore += buttonS;
         this.UpdateScoreLabel(gameScore);
+        print(this.gameScore + " local");
+        print(gameScore + " global");
+        if (buttonS == 0)
+        {
+            print("miss");
+            lightScript.darkenMiss();
+        }
+        else if(buttonS > 0 && buttonS < 800)
+        {
+            print("good");
+            lightScript.brightenGood();
+        }
+        else if(buttonS >= 800){
+            print("perfect");
+            lightScript.brightenPerfect();
+        }
     }
 
     private void UpdateScoreLabel(int scoreValue)
