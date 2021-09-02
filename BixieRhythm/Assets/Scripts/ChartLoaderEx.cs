@@ -9,6 +9,8 @@ public class ChartLoaderEx : MonoBehaviour
 {
     public static ChartReader chartReader;
 
+    public float speed = 1f;
+
     public Transform[] notePrefabs;
 
     // Start is called before the first frame update
@@ -37,7 +39,7 @@ public class ChartLoaderEx : MonoBehaviour
         {
             if (note.ButtonIndexes[i])
             {
-                point = new Vector3(i-2f, 0f, note.Seconds);
+                point = new Vector3(i-2f, 0f, note.Seconds * speed);
                 SpawnPrefab(notePrefabs[i], point);
             }
         }
