@@ -8,6 +8,7 @@ TagManager:
   - NoteButton
   - Canvas
   - ButtonController
+  - Notes
   layers:
   - Default
   - TransparentFX
