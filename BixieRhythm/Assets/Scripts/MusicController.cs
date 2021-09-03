@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    public AudioSource audio;
+    public AudioSource musicAudio;
     public string clipName;
 
 	// Use this for initialization
@@ -18,9 +18,9 @@ public class MusicController : MonoBehaviour
 
     public void PlayAudio()
     {
-        if (audio.clip != null)
+        if (musicAudio.clip != null)
         {
-            audio.Play();
+            musicAudio.Play();
         }
     }
 	
@@ -35,7 +35,7 @@ public class MusicController : MonoBehaviour
         AudioClip clip = Resources.Load(clipName) as AudioClip;
         if(clip != null)
         {
-            this.audio.clip = clip;
+            this.musicAudio.clip = clip;
         }
     }
 }
