@@ -15,7 +15,7 @@ public class MappingModeController : MonoBehaviour
     public Text timerLabel;
     public Text playLabel;
     public InputField speedInput;
-    public AudioSource audio;
+    public AudioSource musicAudio;
 
     public GameObject buttonPrefab;
     public float scaleSensitivity;
@@ -144,9 +144,9 @@ public class MappingModeController : MonoBehaviour
     {
         if (this.mapTimer.IsRunning)
         {
-            if(this.audio.clip != null)
+            if(this.musicAudio.clip != null)
             {
-                audio.Pause();
+                musicAudio.Pause();
             }
 
             this.mapTimer.Stop();
@@ -154,9 +154,9 @@ public class MappingModeController : MonoBehaviour
         }
         else
         {
-            if (audio.clip != null)
+            if (musicAudio.clip != null)
             {
-                audio.Play();
+                musicAudio.Play();
             }
             if (this.speedInput != null)
             {
@@ -204,6 +204,6 @@ public class MappingModeController : MonoBehaviour
  
         AudioClip clip = Resources.Load(clipName) as AudioClip;
 
-        this.audio.clip = clip;
+        this.musicAudio.clip = clip;
     }
 }
