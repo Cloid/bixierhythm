@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Author: Herald Hamor
 public class NoteScroller : MonoBehaviour
 {
     // Public Variables
