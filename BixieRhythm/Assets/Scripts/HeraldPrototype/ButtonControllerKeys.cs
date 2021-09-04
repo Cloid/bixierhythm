@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// Author: Herald Hamor
+
 public class ButtonControllerKeys : MonoBehaviour
 {
+    // Author: Herald Hamor
     // Public Variables
     public Sprite defaultImage;
     public Sprite pressedImage;

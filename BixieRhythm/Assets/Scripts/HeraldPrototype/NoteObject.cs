@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// Author: Herald Hamor
+
 public class NoteObject : MonoBehaviour
 {
+    // Author: Herald Hamor
     // Public Variables
     public bool canBePressed;
     public KeyCode keyToPress;
