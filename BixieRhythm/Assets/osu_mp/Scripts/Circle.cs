@@ -55,6 +55,7 @@ public class Circle : MonoBehaviour
         {
             RemoveNow = true;
             this.enabled = true;
+            //this.collider.enabled = false;
         }
     }
 
@@ -77,7 +78,7 @@ public class Circle : MonoBehaviour
         while (true)
         {
             // 75 means delay before removing
-            if (GameHandler.timer >= PosA + (GameHandler.ApprRate + 75) && !GotIt)
+            if (GameHandler.timer >= PosA + (GameHandler.ApprRate + GameHandler.timeAfterDeath) && !GotIt)
             {
                 Remove();
                 GameHandler.ClickedCount++;

@@ -25,6 +25,8 @@ public class GameHandler : MonoBehaviour
     public static double timer = 0; // Main song timer
     public static int ApprRate = 600; // Approach rate (in ms)
     private int DelayPos = 0; // Delay song position
+    public static int timeAfterDeath = 200;
+    public static int perfectRange = 75;
 
     public static int ClickedCount = 0; // Clicked objects counter
     private static int ObjCount = 0; // Spawned objects counter
@@ -176,33 +178,82 @@ public class GameHandler : MonoBehaviour
             DelayPos = (CircleList[ObjCount].GetComponent<Circle>().PosA);
             MainRay = MainCamera.ScreenPointToRay(Input.mousePosition);
 
-            try{
+            if(ObjCount != CircleList.Count){
+                        
                 // Spawn object
                 if (timer >= DelayPos)
                 {
                     CircleList[ObjCount].GetComponent<Circle>().Spawn();
-                    ObjCount++;
-                    
+                    if(ObjCount+1 < CircleList.Count){
+                        ObjCount++;        
+                    }
                 }
             }
 
-            catch{
-                Debug.Log("Accessing something you cannot access");
-                //break;
-            }
-
-            // Check if cursor is over object
+            // Check if cursor is over object 
+            
             if (Physics.Raycast(MainRay, out MainHit))
             {
-                if (MainHit.collider.name == "Circle(Clone)" && timer >= MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate)
+                // EARLY HIT ??
+                if (MainHit.collider.name == "Circle(Clone)" && (timer + perfectRange) < (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate))
                 {
                     if (Input.GetMouseButtonDown(0)){
+                        Debug.Log("TIME HIT: " + timer + 
+                                "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
+                        Debug.Log("EARLY");
+                        
                         MainHit.collider.gameObject.GetComponent<Circle>().Got();
                         MainHit.collider.enabled = false;
                         ClickedCount++;
                     }
                     
                 }
+
+                // LATE HIT
+                else if (MainHit.collider.name == "Circle(Clone)" && (timer - perfectRange) > MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate)
+                {
+                    if (Input.GetMouseButtonDown(0)){
+                        Debug.Log("TIME HIT: " + timer + 
+                                "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
+                        Debug.Log("LATE");
+
+                        MainHit.collider.gameObject.GetComponent<Circle>().Got();
+                        MainHit.collider.enabled = false;
+                        ClickedCount++;
+                    }
+                    
+                }
+
+                // PERFECT HIT
+                else if (MainHit.collider.name == "Circle(Clone)") //&& 
+                    //(timer !>= MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate - perfectRange && timer !<= MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate - perfectRange))
+                {
+                    if (Input.GetMouseButtonDown(0)){
+                        Debug.Log("TIME HIT: " + timer + 
+                                "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
+                        Debug.Log("PERFECT");
+
+                        MainHit.collider.gameObject.GetComponent<Circle>().Got();
+                        MainHit.collider.enabled = false;
+                        ClickedCount++;
+                    }
+                    
+                }
+
+                
+
+                // // LATE HIT ??
+                // else if (MainHit.collider.name == "Circle(Clone)" && timer > MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate)
+                // {
+                //     if (Input.GetMouseButtonDown(0)){
+                //         MainHit.collider.gameObject.GetComponent<Circle>().Got();
+                //         MainHit.collider.enabled = false;
+                //         ClickedCount++;
+                //         Debug.Log("TIMER: " + timer + "\nPosA: " + MainHit.collider.gameObject.GetComponent<Circle>().PosA);
+                //         Debug.Log("LATE");
+                //     }
+                    
+                // }
             }
 
             // Cursor trail movement
