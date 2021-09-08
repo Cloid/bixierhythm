@@ -44,14 +44,14 @@ public class GameController : MonoBehaviour
 
     private IEnumerator FadeOutMusic(float seconds)
     {
-        float startVol = this.musicController.audio.volume;
+        float startVol = this.musicController.GetComponent<AudioSource>().volume;
 
-        while(this.musicController.audio.volume > 0)
+        while(this.musicController.GetComponent<AudioSource>().volume > 0)
         {
-            this.musicController.audio.volume -= startVol * (Time.deltaTime / seconds);
+            this.musicController.GetComponent<AudioSource>().volume -= startVol * (Time.deltaTime / seconds);
             yield return null;
         }
-        this.musicController.audio.Stop();
+        this.musicController.GetComponent<AudioSource>().Stop();
     }
 
     // Update is called once per frame

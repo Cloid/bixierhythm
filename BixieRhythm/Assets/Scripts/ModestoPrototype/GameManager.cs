@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Author: Herald Hamor
 public class GameManager : MonoBehaviour
 {
     // Public Variables

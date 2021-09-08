@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NoteObject : MonoBehaviour
 {
+    // Author: Herald Hamor
     // Public Variables
     public bool canBePressed;
     public KeyCode keyToPress;

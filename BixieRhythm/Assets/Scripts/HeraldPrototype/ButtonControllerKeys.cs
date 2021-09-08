@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonControllerKeys : MonoBehaviour
 {
+    // Author: Herald Hamor
     // Public Variables
     public Sprite defaultImage;
     public Sprite pressedImage;
