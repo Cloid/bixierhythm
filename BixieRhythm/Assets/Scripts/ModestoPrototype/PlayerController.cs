@@ -5,15 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Public Variables
+    //      Button gameObjects
+    public GameObject greenButton;
+    public GameObject redButton;
+    public GameObject yellowButton;
+    public GameObject blueButton;
+    public GameObject orangeButton;
 
     // Private Variables
-    //      Button gameObjects
-    private GameObject greenButton;
-    private GameObject redButton;
-    private GameObject yellowButton;
-    private GameObject blueButton;
-    private GameObject orangeButton;
-
     //      Player Model
     private GameObject playerModel;
 
