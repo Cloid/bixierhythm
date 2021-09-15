@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4858362944512862}
   - component: {fileID: 114692418342517324}
   - component: {fileID: 65712764148315052}
+  - component: {fileID: 671178543041204832}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -44,15 +45,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1048798711757196}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 408101e610c02a8458964f88eb3d793d, type: 3}
+  m_Script: {fileID: 11500000, guid: f69cd41ce0812a4458c814bb9856a208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PosA: 0
   MainApproach: {fileID: 1202609847560596}
   MainFore: {fileID: 1205178246552746}
   MainBack: {fileID: 1646639664417182}
-  Fore: {fileID: 212759885179515234}
-  Back: {fileID: 212883330347435912}
+  Fore: {fileID: 0}
+  Back: {fileID: 0}
   Appr: {fileID: 0}
 --- !u!65 &65712764148315052
 BoxCollider:
@@ -67,6 +68,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1.1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!210 &671178543041204832
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048798711757196}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
 --- !u!1 &1202609847560596
 GameObject:
   m_ObjectHideFlags: 0

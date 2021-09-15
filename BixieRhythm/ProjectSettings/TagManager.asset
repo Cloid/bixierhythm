@@ -9,6 +9,7 @@ TagManager:
   - Canvas
   - ButtonController
   - Notes
+  - MainCameraOsu
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Arrows
   - Water
   - UI
-  - 
+  - SecondCam
   - 
   - 
   - 
