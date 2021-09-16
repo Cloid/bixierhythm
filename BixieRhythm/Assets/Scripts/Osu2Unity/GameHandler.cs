@@ -133,7 +133,11 @@ public class GameHandler : MonoBehaviour
             CircleObject.GetComponent<Circle>().Back.sortingOrder = BackOrder;
             CircleObject.GetComponent<Circle>().Appr.sortingOrder = ApproachOrder;
             CircleObject.transform.localPosition += new Vector3((float) CircleObject.transform.localPosition.x, (float) CircleObject.transform.localPosition.y, (float) Z_Index);
+            
+            //CircleObject.transform.parent = MainCamera.transform;
             CircleObject.transform.SetAsFirstSibling();
+            
+            
             ForeOrder--; BackOrder--; ApproachOrder--; Z_Index += 0.01f;
 
             int FlipY = 384 - int.Parse(LineParams[1]); // Flip Y axis
@@ -156,6 +160,7 @@ public class GameHandler : MonoBehaviour
 
             MainCircle.Set(MainPos.x, MainPos.y, CircleObject.transform.position.z, int.Parse(LineParams[2]) - ApprRate);
 
+            
             CircleList.Add(CircleObject);
         }
         GameStart();
@@ -184,6 +189,7 @@ public class GameHandler : MonoBehaviour
                 if (timer >= DelayPos)
                 {
                     CircleList[ObjCount].GetComponent<Circle>().Spawn();
+                    //CircleList[ObjCount].transform.parent = MainCamera.transform;
                     if(ObjCount+1 < CircleList.Count){
                         ObjCount++;        
                     }
