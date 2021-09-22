@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         // Gets the gameobjects of each button using the index
         // If the order of the buttons gets changed in the Player gameobject, then the indices must also be changed accordingly
         greenButton = transform.GetChild(2).gameObject;
