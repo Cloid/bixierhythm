@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
@@ -16,10 +17,16 @@ public class GameHandler : MonoBehaviour
     public GameObject perfectObject; // Circle Object
     public GameObject poorObject; // Circle Object
 
+    [Header("Score Text")]
+    public Text scoreText;
+    public Text accText;
+    public Text multiplierText;
+
     [Header("Map")]
     public DefaultAsset MapFile; // Map file (.osu format), attach from editor
     public AudioClip MainMusic; // Music file, attach from editor
     public AudioClip HitSound; // Hit sound
+    
 
     // ----------------------------------------------------------------------------
 
