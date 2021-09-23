@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using System.IO;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
