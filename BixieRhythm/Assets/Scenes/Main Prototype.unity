@@ -31164,7 +31164,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834024049}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1834024051
 Camera:
   m_ObjectHideFlags: 0
@@ -32293,8 +32293,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   accText: {fileID: 0}
   multiplierText: {fileID: 0}
-  MapFile: {fileID: 102900000, guid: f0c1c581acbb0ce45affd71b8f0c9e19, type: 3}
-  MainMusic: {fileID: 8300000, guid: 912ce8ca455763e458b8d13e031e9152, type: 3}
+  MainMusic: {fileID: 8300000, guid: 827f502396029a647a3a155c27d9a02b, type: 3}
   HitSound: {fileID: 8300000, guid: 59d4dc4b6f6d5084e9565dd47e737241, type: 3}
 --- !u!4 &1891330938
 Transform:
@@ -35293,7 +35292,7 @@ GameObject:
   - component: {fileID: 8705673630367857757}
   - component: {fileID: 3858021280390984192}
   m_Layer: 8
-  m_Name: lantern_test
+  m_Name: 1_Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45724,7 +45723,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206186632354422634}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 38.48, y: 3.86, z: -2.23}
+  m_LocalPosition: {x: 38.26, y: 3.86, z: -2.23}
   m_LocalScale: {x: 0.72642016, y: 0.72642004, z: 0.5428481}
   m_Children: []
   m_Father: {fileID: 0}

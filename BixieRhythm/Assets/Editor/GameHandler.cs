@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor;
+//#if UNITY_EDITOR
+using UnityEditor;
+//#endif
 using System.IO;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -23,8 +25,7 @@ public class GameHandler : MonoBehaviour
     public Text multiplierText;
 
     [Header("Map")]
-    //public TextAsset MapFile; // Map file (.osu format), attach from editor
-    //var MapFile = Resources.Load<DefaultAsset>("yoshi");
+    public TextAsset MapFile; // Map file (.osu format), attach from editor
     public AudioClip MainMusic; // Music file, attach from editor
     public AudioClip HitSound; // Hit sound
     
@@ -68,11 +69,7 @@ public class GameHandler : MonoBehaviour
         pSounds = Sounds;
         pHitSound = HitSound;
         CircleList = new List<GameObject>();
-
-        string rip = "Assets/Bixie Osu Track Test 1/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
-        
-
-        ReadCircles(rip);
+        ReadCircles(AssetDatabase.GetAssetPath(MapFile));
     }
 
     // MAP READER
