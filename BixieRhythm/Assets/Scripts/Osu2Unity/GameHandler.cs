@@ -12,6 +12,9 @@ public class GameHandler : MonoBehaviour
 
     [Header("Objects")]
     public GameObject Circle; // Circle Object
+    public GameObject goodObject; // Circle Object
+    public GameObject perfectObject; // Circle Object
+    public GameObject poorObject; // Circle Object
 
     [Header("Map")]
     public DefaultAsset MapFile; // Map file (.osu format), attach from editor
@@ -207,6 +210,9 @@ public class GameHandler : MonoBehaviour
                         Debug.Log("TIME HIT: " + timer + 
                                 "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         Debug.Log("EARLY");
+
+                        GameObject goodObj = Instantiate(goodObject) as GameObject;
+                        goodObj.transform.position = MainHit.transform.position;
                         
                         MainHit.collider.gameObject.GetComponent<Circle>().Got();
                         MainHit.collider.enabled = false;
@@ -223,6 +229,9 @@ public class GameHandler : MonoBehaviour
                                 "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         Debug.Log("LATE");
 
+                        GameObject poorObj = Instantiate(poorObject) as GameObject;
+                        poorObj.transform.position = MainHit.transform.position;
+
                         MainHit.collider.gameObject.GetComponent<Circle>().Got();
                         MainHit.collider.enabled = false;
                         ClickedCount++;
@@ -238,6 +247,9 @@ public class GameHandler : MonoBehaviour
                         Debug.Log("TIME HIT: " + timer + 
                                 "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         Debug.Log("PERFECT");
+
+                        GameObject perfectObj = Instantiate(perfectObject) as GameObject;
+                        perfectObj.transform.position = MainHit.transform.position;
 
                         MainHit.collider.gameObject.GetComponent<Circle>().Got();
                         MainHit.collider.enabled = false;
