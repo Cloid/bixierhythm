@@ -17,7 +17,8 @@ public class ChartLoaderEx : MonoBehaviour
     void Start()
     {
         chartReader = new ChartReader();
-        Chart yoshiChart = chartReader.ReadChartFile("Assets/ChartLoader/ChartLoader/Songs/Yoshi/Yoshi.chart");
+        //Chart yoshiChart = chartReader.ReadChartFile("Assets/ChartLoader/ChartLoader/Songs/Yoshi/Yoshi.chart");
+        Chart yoshiChart = chartReader.ReadChartFile("Assets/Resources/Yoshi.chart");
 
         Note[] expertGuitarNotes = yoshiChart.GetNotes("ExpertSingle");
         SpawnNotes(expertGuitarNotes);

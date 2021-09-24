@@ -69,9 +69,7 @@ public class GameHandler : MonoBehaviour
         pHitSound = HitSound;
         CircleList = new List<GameObject>();
 
-        string rip = "Assets/Bixie Osu Track Test 1/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
-        
-
+        string rip = "Assets/Resources/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
         ReadCircles(rip);
     }
 
