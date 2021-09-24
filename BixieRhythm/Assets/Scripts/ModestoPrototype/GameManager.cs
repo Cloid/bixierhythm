@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
     // If a player misses a note, then the accuracy count is decreased.
     public void NoteMissed()
     {
-        Debug.Log("Missed note!");
+        //Debug.Log("Missed note!");
         currMultiplier = 1;
         multTracker = 0;
         multiplierText.text = "Multiplier: x" + currMultiplier;

@@ -219,9 +219,9 @@ public class GameHandler : MonoBehaviour
                 if (MainHit.collider.name == "Circle(Clone)" && (timer + perfectRange) < (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate))
                 {
                     if (Input.GetMouseButtonDown(0)){
-                        Debug.Log("TIME HIT: " + timer + 
-                                "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
-                        Debug.Log("EARLY");
+                        //Debug.Log("TIME HIT: " + timer + 
+                        //        "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
+                        //Debug.Log("EARLY");
 
                         GameObject goodObj = Instantiate(goodObject) as GameObject;
                         goodObj.transform.position = MainHit.transform.position;
@@ -237,9 +237,9 @@ public class GameHandler : MonoBehaviour
                 else if (MainHit.collider.name == "Circle(Clone)" && (timer - perfectRange) > MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate)
                 {
                     if (Input.GetMouseButtonDown(0)){
-                        Debug.Log("TIME HIT: " + timer + 
-                                "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
-                        Debug.Log("LATE");
+                        //Debug.Log("TIME HIT: " + timer + 
+                        //        "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
+                        //Debug.Log("LATE");
 
                         GameObject poorObj = Instantiate(poorObject) as GameObject;
                         poorObj.transform.position = MainHit.transform.position;
@@ -256,9 +256,9 @@ public class GameHandler : MonoBehaviour
                     //(timer !>= MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate - perfectRange && timer !<= MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate - perfectRange))
                 {
                     if (Input.GetMouseButtonDown(0)){
-                        Debug.Log("TIME HIT: " + timer + 
-                                "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
-                        Debug.Log("PERFECT");
+                        //Debug.Log("TIME HIT: " + timer + 
+                                //"\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
+                        //Debug.Log("PERFECT");
 
                         GameObject perfectObj = Instantiate(perfectObject) as GameObject;
                         perfectObj.transform.position = MainHit.transform.position;

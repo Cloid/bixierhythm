@@ -11,11 +11,13 @@ public class Circle : MonoBehaviour
     [HideInInspector]
     public int PosA = 0;
 
-    private Color MainColor, MainColor1, MainColor2; // Circle sprites color
-    public GameObject MainApproach, MainFore, MainBack; // Circle objects
+    private Color MainColor, MainColor1, MainColor2, MainLant1; // Circle sprites color
+    public GameObject MainApproach, MainFore, MainBack, Lantern1; // Circle objects
 
     [HideInInspector]
     public SpriteRenderer Fore, Back, Appr; // Circle sprites
+    [HideInInspector]
+    public Renderer Lant1;
 
     // Checker stuff
     private bool RemoveNow = false;
@@ -26,6 +28,7 @@ public class Circle : MonoBehaviour
         Fore = MainFore.GetComponent<SpriteRenderer>();
         Back = MainBack.GetComponent<SpriteRenderer>();
         Appr = MainApproach.GetComponent<SpriteRenderer>();
+        Lant1 = Lantern1.GetComponent<Renderer>();
     }
 
     // Set circle configuration
@@ -38,6 +41,7 @@ public class Circle : MonoBehaviour
         MainColor = Appr.color;
         MainColor1 = Fore.color;
         MainColor2 = Back.color;
+        MainLant1 = Lant1.material.color;
     }
 
     // Spawning the circle
@@ -98,9 +102,12 @@ public class Circle : MonoBehaviour
             MainColor.a += 4f * Time.deltaTime;
             MainColor1.a += 4f * Time.deltaTime;
             MainColor2.a += 4f * Time.deltaTime;
+            MainLant1.a += 4f * Time.deltaTime;
+
             Fore.color = MainColor1;
             Back.color = MainColor2;
             Appr.color = MainColor;
+            Lant1.material.color = MainLant1;
 
         }
         // If circle wasn't clicked
@@ -117,10 +124,16 @@ public class Circle : MonoBehaviour
             {
                 MainColor1.a -= 10f * Time.deltaTime;
                 MainColor2.a -= 10f * Time.deltaTime;
+                MainLant1.a -= 10f * Time.deltaTime;
+
                 MainFore.transform.localPosition += (Vector3.down * 2) * Time.deltaTime;
                 MainBack.transform.localPosition += Vector3.down * Time.deltaTime;
+                Lantern1.transform.localPosition += (Vector3.down * 2) * Time.deltaTime;
+
                 Fore.color = MainColor1;
                 Back.color = MainColor2;
+                Lant1.material.color = MainLant1;
+
                 if (MainColor1.a <= 0f)
                 {
                     gameObject.transform.position = new Vector2(-101, -101);
@@ -133,10 +146,15 @@ public class Circle : MonoBehaviour
         {
             MainColor1.a -= 10f * Time.deltaTime;
             MainColor2.a -= 10f * Time.deltaTime;
+            MainLant1.a -= 10f * Time.deltaTime;
+
             MainFore.transform.localScale += new Vector3(2, 2, 0) * Time.deltaTime;
             MainBack.transform.localScale += new Vector3(2, 2, 0) * Time.deltaTime;
+            Lantern1.transform.localScale += new Vector3(3/2, 3/2, 3/2) * Time.deltaTime;
+
             Fore.color = MainColor1;
             Back.color = MainColor2;
+            Lant1.material.color = MainLant1;
             if (MainColor1.a <= 0f)
             {
                 gameObject.transform.position = new Vector2(-101, -101);

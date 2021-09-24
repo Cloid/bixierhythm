@@ -96,7 +96,7 @@ public class NoteController : MonoBehaviour
         if (other.tag == "NoteButton")
         {
             canBePressed = true;
-            Debug.Log("Button can be pressed!");
+            //Debug.Log("Button can be pressed!");
         }
     }
 
@@ -107,7 +107,7 @@ public class NoteController : MonoBehaviour
         if (other.tag == "NoteButton")
         {
             canBePressed = false;
-            Debug.Log("Button cannot be pressed! Note missed!");
+            //Debug.Log("Button cannot be pressed! Note missed!");
             GameManager.instance.NoteMissed();
             StartCoroutine(DestroyNote());
         } 
