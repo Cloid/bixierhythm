@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 235167714}
   - component: {fileID: 235167713}
   m_Layer: 5
-  m_Name: Accuracy
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Accuracy:'
+  m_Text: '
+
+'
 --- !u!222 &235167714
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1614,8 +1616,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chartLoader: {fileID: 866616217}
-  scoreText: {fileID: 538140409}
-  accText: {fileID: 235167713}
+  GHScoreText: {fileID: 538140409}
+  HPText: {fileID: 235167713}
   multiplierText: {fileID: 1067028126}
 --- !u!1 &1424401790
 GameObject:

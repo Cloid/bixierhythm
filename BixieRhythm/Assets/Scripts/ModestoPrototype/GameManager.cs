@@ -10,15 +10,20 @@ public class GameManager : MonoBehaviour
     public GameObject chartLoader;
     public static GameManager instance;
 
-    public Text scoreText;
-    public Text accText;
+    // Score variables are split based on type of rhythm game (GH = Guitar Hero, OS = Osu)
+    public Text GHScoreText;
+    // Note Accuracy - public Text accText;
+    public Text HPText;
     public Text multiplierText;
 
     // Private Variables
-    private int currentScore = 0;
-    private float maxNotes;
-    private float currentNotes;
+    private int currentGHScore = 0;
+    private int currentOSScore = 0;
+    private int playerHP = 100;
+    // Note Accuracy - Accuracy variables
+    /*private float maxNotes;
     private int noteAccuracy;
+    private float currentNotes; */
     private int scorePerBadNote = 50;
     private int scorePerNote = 100;
     private int scorePerGoodNote = 150;
@@ -32,13 +37,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        scoreText.text = "Score: " + currentScore;
+        GHScoreText.text = "Score: " + currentGHScore;
         currMultiplier = 1;
         multiplierText.text = "Multiplier: x" + currMultiplier;
         multThreshold = new int[4] { 2, 4, 6, 8 };
+        HPText.text = "" + playerHP;
 
-        // This is delayed with a coroutine because the notes spawn after the first frame
-        StartCoroutine(UpdateAcc());
+        //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
+        // StartCoroutine(UpdateAcc());
     }
 
     // Update is called once per frame
@@ -46,15 +52,15 @@ public class GameManager : MonoBehaviour
     {
     }
 
-    // Determines overall accuracy of the player based on how many notes were missed by the player vs the notes spawned by ChartEditor
-    IEnumerator UpdateAcc()
+    // Note Accuracy - Determines overall accuracy of the player based on how many notes were missed by the player vs the notes spawned by ChartEditor
+    /* IEnumerator UpdateAcc()
     {
         yield return new WaitForSeconds(0.01f);
         maxNotes = chartLoader.transform.childCount;
         currentNotes = maxNotes;
         noteAccuracy = Mathf.FloorToInt((currentNotes / maxNotes) * 100);
         accText.text = "Accuracy: " + noteAccuracy + "%";
-    }
+    } */
 
     
     // Note hitting function that passes the modifiers of previous functions (BadHit - PerfectHit) and changes score/multiplier numbers accordingly
@@ -74,31 +80,37 @@ public class GameManager : MonoBehaviour
         }
 
         multiplierText.text = "Multiplier: x" + currMultiplier;
-        currentScore += scorePerNote * currMultiplier;
-        scoreText.text = "Score: " + currentScore;
+        currentGHScore += scorePerNote * currMultiplier;
+        GHScoreText.text = "Score: " + currentGHScore;
+
+        if(playerHP < 100)
+        {
+            playerHP += 1;
+            HPText.text = "" + playerHP;
+        }
     }
 
-    // Different types of hits based on note accuracy
+    // Different types of hits based on individual note accuracy
     public void BadHit()
     {
-        currentScore += scorePerBadNote * currMultiplier;
+        currentGHScore += scorePerBadNote * currMultiplier;
         NoteHit();
     }
 
     public void NormalHit()
     {
-        currentScore += scorePerNote * currMultiplier;
+        currentGHScore += scorePerNote * currMultiplier;
         NoteHit();
     }
 
     public void GoodHit()
     {
-        currentScore += scorePerGoodNote * currMultiplier;
+        currentGHScore += scorePerGoodNote * currMultiplier;
         NoteHit();
     }
     public void PerfectHit()
     {
-        currentScore += scorePerPerfectNote * currMultiplier;
+        currentGHScore += scorePerPerfectNote * currMultiplier;
         NoteHit();
     }
 
@@ -109,8 +121,16 @@ public class GameManager : MonoBehaviour
         currMultiplier = 1;
         multTracker = 0;
         multiplierText.text = "Multiplier: x" + currMultiplier;
-        currentNotes -= 1;
+
+        if(playerHP > 0)
+        {
+            playerHP -= 5;
+            HPText.text = "" + playerHP;
+        }
+
+        // Note Accuracy - Updates accuracy value if 
+        /* currentNotes -= 1;
         noteAccuracy = Mathf.FloorToInt((currentNotes / maxNotes) * 100);
-        accText.text = "Accuracy: " + noteAccuracy + "%";
+        accText.text = "Accuracy: " + noteAccuracy + "%"; */
     }
 }
