@@ -7,23 +7,29 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // Public Variables
+    // General GameObjects
     public GameObject chartLoader;
     public static GameManager instance;
 
-    // Score variables are split based on type of rhythm game (GH = Guitar Hero, OS = Osu)
+    // Score GameObjects are split based on type of rhythm game (GH = Guitar Hero, OS = Osu)
     public Text GHScoreText;
     // Note Accuracy - public Text accText;
     public Text HPText;
     public Text multiplierText;
 
+    // Sprite GameObjects
+    public Image QinyangPortrait;
+    public Image MeiLienPortrait;
+    public Image HPBar;
+
     // Private Variables
     private int currentGHScore = 0;
     private int currentOSScore = 0;
     private int playerHP = 100;
-    // Note Accuracy - Accuracy variables
-    /*private float maxNotes;
-    private int noteAccuracy;
-    private float currentNotes; */
+        // Note Accuracy - Accuracy variables
+        /*private float maxNotes;
+        private int noteAccuracy;
+        private float currentNotes; */
     private int scorePerBadNote = 50;
     private int scorePerNote = 100;
     private int scorePerGoodNote = 150;
@@ -90,27 +96,79 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Helper function that changes portrait sprite based on game state (notes missed or combos)
+    private void ChangePortrait(string portraitCase, int playerType)
+    {
+        // Gets current portrait based on note feedback and whether it is Qinyang or Mei Lien that is reacting
+        switch (portraitCase)
+        {
+            case "Perfect":
+                if(playerType == 0)
+                {
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_perfcombo");
+                } else
+                {
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_perfcombo");
+                }
+                break;
+            case "Normal":
+                if (playerType == 0)
+                {
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_normal");
+                }
+                else
+                {
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_normal");
+                }
+                break;
+            case "Bad":
+                if (playerType == 0)
+                {
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_hit");
+                }
+                else
+                {
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_hit");
+                }
+                break;
+            default:
+                if (playerType == 0)
+                {
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_normal");
+                }
+                else
+                {
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_normal");
+                }
+                break;
+        }
+    }
+
     // Different types of hits based on individual note accuracy
-    public void BadHit()
+    public void GHBadHit()
     {
         currentGHScore += scorePerBadNote * currMultiplier;
+        ChangePortrait("Bad", 0);
         NoteHit();
     }
 
-    public void NormalHit()
+    public void GHNormalHit()
     {
         currentGHScore += scorePerNote * currMultiplier;
+        ChangePortrait("Normal", 0);
         NoteHit();
     }
 
-    public void GoodHit()
+    public void GHGoodHit()
     {
         currentGHScore += scorePerGoodNote * currMultiplier;
+        ChangePortrait("Normal", 0);
         NoteHit();
     }
-    public void PerfectHit()
+    public void GHPerfectHit()
     {
         currentGHScore += scorePerPerfectNote * currMultiplier;
+        ChangePortrait("Perfect", 0);
         NoteHit();
     }
 
@@ -118,6 +176,7 @@ public class GameManager : MonoBehaviour
     public void NoteMissed()
     {
         //Debug.Log("Missed note!");
+        ChangePortrait("Bad", 0);
         currMultiplier = 1;
         multTracker = 0;
         multiplierText.text = "Multiplier: x" + currMultiplier;
