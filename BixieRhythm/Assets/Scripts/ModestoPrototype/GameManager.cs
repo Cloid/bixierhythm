@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // Score GameObjects are split based on type of rhythm game (GH = Guitar Hero, OS = Osu)
     public Text GHScoreText;
     // Note Accuracy - public Text accText;
+    public Text GHComboText;
     public Text HPText;
     public Text multiplierText;
 
@@ -21,11 +22,17 @@ public class GameManager : MonoBehaviour
     public Image QinyangPortrait;
     public Image MeiLienPortrait;
     public Image HPBar;
+    public Sprite PerfectNote;
+    public Sprite GreatNote;
+    public Sprite OkayNote;
+    public Sprite BadNote;
+    public Sprite MissedNote;
 
     // Private Variables
     private int currentGHScore = 0;
     private int currentOSScore = 0;
-    private int playerHP = 100;
+    private float maxPlayerHP = 100;
+    private float currentPlayerHP = 100;
         // Note Accuracy - Accuracy variables
         /*private float maxNotes;
         private int noteAccuracy;
@@ -35,8 +42,8 @@ public class GameManager : MonoBehaviour
     private int scorePerGoodNote = 150;
     private int scorePerPerfectNote = 200;
 
-    private int currMultiplier;
-    private int multTracker;
+    private int currGHMultiplier;
+    private int multGHTracker;
     private int[] multThreshold;
 
     // Start is called before the first frame update
@@ -44,10 +51,10 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         GHScoreText.text = "Score: " + currentGHScore;
-        currMultiplier = 1;
-        multiplierText.text = "Multiplier: x" + currMultiplier;
-        multThreshold = new int[4] { 2, 4, 6, 8 };
-        HPText.text = "" + playerHP;
+        currGHMultiplier = 1;
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        multThreshold = new int[5] {2, 4, 6, 8, 10};
+        HPText.text = "" + currentPlayerHP;
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
         // StartCoroutine(UpdateAcc());
@@ -68,31 +75,40 @@ public class GameManager : MonoBehaviour
         accText.text = "Accuracy: " + noteAccuracy + "%";
     } */
 
+    // Helper function that changes the HP bar
+    public void updateHPBar()
+    {
+        HPBar.fillAmount = currentPlayerHP / maxPlayerHP;
+        HPText.text = "" + currentPlayerHP;
+    }
     
     // Note hitting function that passes the modifiers of previous functions (BadHit - PerfectHit) and changes score/multiplier numbers accordingly
     public void NoteHit()
     {
         Debug.Log("Hit on time!");
 
-        if (currMultiplier - 1 < multThreshold.Length)
+        if (currGHMultiplier - 1 < multThreshold.Length)
         {
-            multTracker++;
+            multGHTracker++;
+            //Debug.Log(multGHTracker);
 
-            if (multThreshold[currMultiplier - 1] <= multTracker)
+            if (multThreshold[currGHMultiplier - 1] <= multGHTracker)
             {
-                currMultiplier++;
-                multTracker = 0;
+                currGHMultiplier++;
+                multGHTracker = 0;
+                //Debug.Log("You advanced to next multiplier!");
             }
         }
 
-        multiplierText.text = "Multiplier: x" + currMultiplier;
-        currentGHScore += scorePerNote * currMultiplier;
+        GHComboText.text = "Combo: " + multGHTracker;
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        currentGHScore += scorePerNote * currGHMultiplier;
         GHScoreText.text = "Score: " + currentGHScore;
 
-        if(playerHP < 100)
+        if(currentPlayerHP < 100)
         {
-            playerHP += 1;
-            HPText.text = "" + playerHP;
+            currentPlayerHP += 1;
+            updateHPBar();
         }
     }
 
@@ -147,44 +163,45 @@ public class GameManager : MonoBehaviour
     // Different types of hits based on individual note accuracy
     public void GHBadHit()
     {
-        currentGHScore += scorePerBadNote * currMultiplier;
+        currentGHScore += scorePerBadNote * currGHMultiplier;
         ChangePortrait("Bad", 0);
         NoteHit();
     }
 
     public void GHNormalHit()
     {
-        currentGHScore += scorePerNote * currMultiplier;
+        currentGHScore += scorePerNote * currGHMultiplier;
         ChangePortrait("Normal", 0);
         NoteHit();
     }
 
     public void GHGoodHit()
     {
-        currentGHScore += scorePerGoodNote * currMultiplier;
+        currentGHScore += scorePerGoodNote * currGHMultiplier;
         ChangePortrait("Normal", 0);
         NoteHit();
     }
     public void GHPerfectHit()
     {
-        currentGHScore += scorePerPerfectNote * currMultiplier;
+        currentGHScore += scorePerPerfectNote * currGHMultiplier;
         ChangePortrait("Perfect", 0);
         NoteHit();
     }
 
-    // If a player misses a note, then the accuracy count is decreased.
+    // If a player misses a note, then the HP count is decreased.
     public void NoteMissed()
     {
         //Debug.Log("Missed note!");
         ChangePortrait("Bad", 0);
-        currMultiplier = 1;
-        multTracker = 0;
-        multiplierText.text = "Multiplier: x" + currMultiplier;
+        currGHMultiplier = 1;
+        multGHTracker = 0;
+        GHComboText.text = "Combo: " + multGHTracker;
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
 
-        if(playerHP > 0)
+        if(currentPlayerHP > 0)
         {
-            playerHP -= 5;
-            HPText.text = "" + playerHP;
+            currentPlayerHP -= 5;
+            updateHPBar();
         }
 
         // Note Accuracy - Updates accuracy value if 
