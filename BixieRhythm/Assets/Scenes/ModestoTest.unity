@@ -1848,11 +1848,12 @@ MonoBehaviour:
   QinyangPortrait: {fileID: 616312940}
   MeiLienPortrait: {fileID: 2073327540}
   HPBar: {fileID: 912949865}
-  PerfectNote: {fileID: 21300000, guid: 9c5f70667c07e9c42a7db46c57f7d0d5, type: 3}
-  GreatNote: {fileID: 21300000, guid: b186709e50b45d049bdd7784a155a02e, type: 3}
-  OkayNote: {fileID: 21300000, guid: e78c93d1784c98f428c5d47bfd0b38d9, type: 3}
-  BadNote: {fileID: 21300000, guid: 4f91a942cad084341b36b59c9dfa9396, type: 3}
-  MissedNote: {fileID: 21300000, guid: a03cceac527ee2e4c97460d68856eac1, type: 3}
+  PerfectNote: {fileID: 4430143044592006560, guid: 2e3f6c4b14e8e184b8c945a8f4d0bf8c, type: 3}
+  GreatNote: {fileID: 1193989327934998243, guid: ac07fc24be63d1b468b046fe2c059ed4, type: 3}
+  OkayNote: {fileID: 1138997320225265929, guid: 59756a62496c81c45b769965f8b2738d, type: 3}
+  BadNote: {fileID: 6460601014578205897, guid: b4b16af629577e4478c34eb7f42141e1, type: 3}
+  MissedNote: {fileID: 7402875657515216737, guid: a139bb8490ee61344b92ac13f8a4d2e7, type: 3}
+  GHPlayer: {fileID: 1424401790}
 --- !u!1 &1405421912
 GameObject:
   m_ObjectHideFlags: 0

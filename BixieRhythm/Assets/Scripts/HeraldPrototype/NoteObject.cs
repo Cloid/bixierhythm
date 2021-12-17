@@ -62,7 +62,7 @@ public class NoteObject : MonoBehaviour
             {
                 canBePressed = false;
                 print("Cannot be pressed!");
-                GameManager.instance.NoteMissed();
+                GameManager.instance.NoteMissed(other.gameObject);
             }
         }
     }

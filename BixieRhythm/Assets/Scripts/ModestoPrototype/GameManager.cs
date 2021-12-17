@@ -22,11 +22,12 @@ public class GameManager : MonoBehaviour
     public Image QinyangPortrait;
     public Image MeiLienPortrait;
     public Image HPBar;
-    public Sprite PerfectNote;
-    public Sprite GreatNote;
-    public Sprite OkayNote;
-    public Sprite BadNote;
-    public Sprite MissedNote;
+    public GameObject PerfectNote;
+    public GameObject GreatNote;
+    public GameObject OkayNote;
+    public GameObject BadNote;
+    public GameObject MissedNote;
+    public GameObject GHPlayer;
 
     // Private Variables
     private int currentGHScore = 0;
@@ -161,10 +162,13 @@ public class GameManager : MonoBehaviour
     }
 
     // Different types of hits based on individual note accuracy
+    // Instantiates note feedback and then deletes it
     public void GHBadHit()
     {
         currentGHScore += scorePerBadNote * currGHMultiplier;
         ChangePortrait("Bad", 0);
+        GameObject clone = Instantiate(BadNote, GHPlayer.transform.GetChild(7).position, BadNote.transform.rotation);
+        Destroy(clone, 1f);
         NoteHit();
     }
 
@@ -172,6 +176,8 @@ public class GameManager : MonoBehaviour
     {
         currentGHScore += scorePerNote * currGHMultiplier;
         ChangePortrait("Normal", 0);
+        GameObject clone = Instantiate(OkayNote, GHPlayer.transform.GetChild(7).position, OkayNote.transform.rotation);
+        Destroy(clone, 1f);
         NoteHit();
     }
 
@@ -179,20 +185,28 @@ public class GameManager : MonoBehaviour
     {
         currentGHScore += scorePerGoodNote * currGHMultiplier;
         ChangePortrait("Normal", 0);
+        GameObject clone = Instantiate(GreatNote, GHPlayer.transform.GetChild(7).position, GreatNote.transform.rotation);
+        Destroy(clone, 1f);
         NoteHit();
     }
     public void GHPerfectHit()
     {
         currentGHScore += scorePerPerfectNote * currGHMultiplier;
         ChangePortrait("Perfect", 0);
+        GameObject clone = Instantiate(GreatNote, GHPlayer.transform.GetChild(7).position, GreatNote.transform.rotation);
+        Destroy(clone, 1f);
         NoteHit();
     }
 
     // If a player misses a note, then the HP count is decreased.
-    public void NoteMissed()
+    // Instantiates note feedback and then deletes it
+    // Differs from other notes as it takes in the transform from the note gameObjects themselves instead of the player
+    public void NoteMissed(GameObject other)
     {
         //Debug.Log("Missed note!");
         ChangePortrait("Bad", 0);
+        GameObject clone = Instantiate(MissedNote, other.transform.position, MissedNote.transform.rotation);
+        Destroy(clone, 1f);
         currGHMultiplier = 1;
         multGHTracker = 0;
         GHComboText.text = "Combo: " + multGHTracker;

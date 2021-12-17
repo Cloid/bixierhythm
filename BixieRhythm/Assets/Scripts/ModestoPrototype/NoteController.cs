@@ -108,7 +108,7 @@ public class NoteController : MonoBehaviour
         {
             canBePressed = false;
             //Debug.Log("Button cannot be pressed! Note missed!");
-            GameManager.instance.NoteMissed();
+            GameManager.instance.NoteMissed(other.gameObject);
             StartCoroutine(DestroyNote());
         } 
     }
@@ -116,8 +116,7 @@ public class NoteController : MonoBehaviour
     // Coroutine that deletes/deactivates the note
     IEnumerator DestroyNote()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
-        //gameObject.SetActive(false);
     }
 }
