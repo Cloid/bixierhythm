@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
         GHScoreText.text = "Score: " + currentGHScore;
         currGHMultiplier = 1;
         multiplierText.text = "Multiplier: x" + currGHMultiplier;
-        multThreshold = new int[5] {2, 4, 6, 8, 10};
+        multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
