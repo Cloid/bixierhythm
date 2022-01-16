@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     // Note Accuracy - Determines overall accuracy of the player based on how many notes were missed by the player vs the notes spawned by ChartEditor
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
         currentGHScore += scorePerBadNote * currGHMultiplier;
         ChangePortrait("Bad", 0);
         GameObject clone = Instantiate(BadNote, GHPlayer.transform.GetChild(7).position, BadNote.transform.rotation);
+        noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
         NoteHit();
     }
@@ -177,6 +179,7 @@ public class GameManager : MonoBehaviour
         currentGHScore += scorePerNote * currGHMultiplier;
         ChangePortrait("Normal", 0);
         GameObject clone = Instantiate(OkayNote, GHPlayer.transform.GetChild(7).position, OkayNote.transform.rotation);
+        noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
         NoteHit();
     }
@@ -186,6 +189,7 @@ public class GameManager : MonoBehaviour
         currentGHScore += scorePerGoodNote * currGHMultiplier;
         ChangePortrait("Normal", 0);
         GameObject clone = Instantiate(GreatNote, GHPlayer.transform.GetChild(7).position, GreatNote.transform.rotation);
+        noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
         NoteHit();
     }
@@ -194,8 +198,17 @@ public class GameManager : MonoBehaviour
         currentGHScore += scorePerPerfectNote * currGHMultiplier;
         ChangePortrait("Perfect", 0);
         GameObject clone = Instantiate(GreatNote, GHPlayer.transform.GetChild(7).position, GreatNote.transform.rotation);
+        noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
         NoteHit();
+    }
+
+    // Helper function that helps the note gameobjects move along with the player
+    private void noteFeedbackTranslate(GameObject clone)
+    {
+        clone.GetComponent<Rigidbody>().AddForce((Vector3.forward) + (Vector3.up * 0.5f), ForceMode.Impulse);
+        Debug.Log(clone.GetComponent<Rigidbody>().velocity);
+
     }
 
     // If a player misses a note, then the HP count is decreased.
@@ -206,6 +219,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("Missed note!");
         ChangePortrait("Bad", 0);
         GameObject clone = Instantiate(MissedNote, other.transform.position, MissedNote.transform.rotation);
+        noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
         currGHMultiplier = 1;
         multGHTracker = 0;
