@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     //      Player Model
     private GameObject playerModel;
 
+    //      Animation
+    private Animator qinyangAnim;
+    private bool isMoving;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -30,6 +34,10 @@ public class PlayerController : MonoBehaviour
         // Gets the gameobject of the player model
         // The player model is separate from the player object as the parent player object moves the children, including the camera and buttons.
         playerModel = transform.GetChild(7).gameObject;
+
+        // Gets the animator of the player model
+        qinyangAnim = GetComponent<Animator>();
+        isMoving = qinyangAnim.GetBool("isMoving");
     }
 
     // Update is called once per frame
