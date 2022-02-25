@@ -53,7 +53,7 @@ public class NoteController : MonoBehaviour
         if(Input.GetKeyDown(keyToPress) && canBePressed)
         {
             // Deactivates game object, but can also destroy the gameObject directly
-            Debug.Log("Note hit!");
+            //Debug.Log("Note hit!");
             Destroy(gameObject);
             //gameObject.SetActive(false);
 
@@ -61,7 +61,7 @@ public class NoteController : MonoBehaviour
             // Debug statement to determine position of the note respective to the button
             if (currButton = pCtrl.greenButton)
             {
-                Debug.Log(Mathf.Abs(transform.position.z - currButton.transform.position.z));
+                //Debug.Log(Mathf.Abs(transform.position.z - currButton.transform.position.z));
             }
             // Calculating accuracy based on z values
             float currDistance = Mathf.Abs(transform.position.z - currButton.transform.position.z);
@@ -69,22 +69,22 @@ public class NoteController : MonoBehaviour
             if (currDistance < 0.1)
             {
                 // If the difference is 0 then it is a perfect hit
-                Debug.Log("It is a perfect hit!");
+                //Debug.Log("It is a perfect hit!");
                 GameManager.instance.GHPerfectHit();
             } else if (currDistance > 0.1 && currDistance <= 0.2)
             {
                 // If the difference is above 0 then it is a good hit
-                Debug.Log("It is a good hit!");
+                //Debug.Log("It is a good hit!");
                 GameManager.instance.GHGoodHit();
             } else if (currDistance > 0.2 && currDistance < 0.3)
             {
                 // If the difference is 0.1 or above then it is a normal hit
-                Debug.Log("It is a normal hit!");
+                //Debug.Log("It is a normal hit!");
                 GameManager.instance.GHNormalHit();
             } else if (currDistance >= 0.3)
             {
                 // If the difference is 0.2 or above then it is a bad hit
-                Debug.Log("It is a bad hit!");
+                //Debug.Log("It is a bad hit!");
                 GameManager.instance.GHBadHit();
             }
         }

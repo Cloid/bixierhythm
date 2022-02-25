@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     //      Animation
     private Animator qinyangAnim;
-    private bool isMoving;
+    float animTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -36,34 +36,47 @@ public class PlayerController : MonoBehaviour
         playerModel = transform.GetChild(7).gameObject;
 
         // Gets the animator of the player model
-        qinyangAnim = GetComponent<Animator>();
-        isMoving = qinyangAnim.GetBool("isMoving");
+        qinyangAnim = playerModel.GetComponent<Animator>();
+
+        // Timer for Animation
+        animTimer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         // If input keys of buttons is pressed, then the player model will move towards the position of the respective button
-        if (Input.inputString != "")
-        {
-            string keyInput = Input.inputString;
-            switch (keyInput)
+        if (Input.anyKeyDown) {
+            if (Input.inputString != "")
             {
-                case "q":
-                    playerModel.transform.position = greenButton.transform.position;
-                    break;
-                case "w":
-                    playerModel.transform.position = redButton.transform.position;
-                    break;
-                case "e":
-                    playerModel.transform.position = yellowButton.transform.position;
-                    break;
-                case "r":
-                    playerModel.transform.position = blueButton.transform.position;
-                    break;
-                case "t":
-                    playerModel.transform.position = orangeButton.transform.position;
-                    break;
+                string keyInput = Input.inputString;
+                switch (keyInput)
+                {
+                    case "q":
+                        playerModel.transform.position = greenButton.transform.position;
+                        break;
+                    case "w":
+                        playerModel.transform.position = redButton.transform.position;
+                        break;
+                    case "e":
+                        playerModel.transform.position = yellowButton.transform.position;
+                        break;
+                    case "r":
+                        playerModel.transform.position = blueButton.transform.position;
+                        break;
+                    case "t":
+                        playerModel.transform.position = orangeButton.transform.position;
+                        break;
+                }
+                qinyangAnim.SetBool("IsMoving", true);
+                animTimer = 0;
+            }
+        } else
+        {
+            animTimer += 1f;
+            if(animTimer > 60f)
+            {
+                qinyangAnim.SetBool("IsMoving", false);
             }
         }
     }

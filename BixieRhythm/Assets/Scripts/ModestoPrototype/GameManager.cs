@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
     // Note hitting function that passes the modifiers of previous functions (BadHit - PerfectHit) and changes score/multiplier numbers accordingly
     public void NoteHit()
     {
-        Debug.Log("Hit on time!");
+        //Debug.Log("Hit on time!");
 
         if (currGHMultiplier - 1 < multThreshold.Length)
         {
@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
     private void noteFeedbackTranslate(GameObject clone)
     {
         clone.GetComponent<Rigidbody>().AddForce((Vector3.forward) + (Vector3.up * 0.5f), ForceMode.Impulse);
-        Debug.Log(clone.GetComponent<Rigidbody>().velocity);
+        //Debug.Log(clone.GetComponent<Rigidbody>().velocity);
 
     }
 
