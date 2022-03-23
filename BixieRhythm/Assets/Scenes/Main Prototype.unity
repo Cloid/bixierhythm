@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5913,7 +5913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &644174673
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8059,11 +8059,14 @@ MonoBehaviour:
   goodObject: {fileID: 2668241670317086902, guid: f92266be7fba0b44ebc43d846e677366, type: 3}
   perfectObject: {fileID: 5929886236444746020, guid: acf80531a390bd949aa439a9130e9348, type: 3}
   poorObject: {fileID: 464723366463473097, guid: f311d1894de5f5d41bb7a69542f5a7ae, type: 3}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 644174674}
   accText: {fileID: 0}
-  multiplierText: {fileID: 0}
+  multiplierText: {fileID: 1987421086}
   MainMusic: {fileID: 8300000, guid: 827f502396029a647a3a155c27d9a02b, type: 3}
   HitSound: {fileID: 8300000, guid: 59d4dc4b6f6d5084e9565dd47e737241, type: 3}
+  scorePerBadNote: 50
+  scorePerGoodNote: 150
+  scorePerPerfectNote: 200
 --- !u!4 &1891330938
 Transform:
   m_ObjectHideFlags: 0
@@ -8353,7 +8356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1987421085
 RectTransform:
   m_ObjectHideFlags: 0

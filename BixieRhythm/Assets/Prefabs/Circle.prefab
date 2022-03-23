@@ -54,6 +54,7 @@ MonoBehaviour:
   MainFore: {fileID: 1205178246552746}
   MainBack: {fileID: 1646639664417182}
   Lantern1: {fileID: 4078404749151967690}
+  missObject: {fileID: 7097402668423431581, guid: 3a49b3ed8725be848a6b6332b47abf00, type: 3}
   Fore: {fileID: 0}
   Back: {fileID: 0}
   Appr: {fileID: 0}
