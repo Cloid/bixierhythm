@@ -19,7 +19,7 @@ public class ChartLoaderEx : MonoBehaviour
         chartReader = new ChartReader();
         //Chart yoshiChart = chartReader.ReadChartFile("Assets/ChartLoader/ChartLoader/Songs/Yoshi/Yoshi.chart");
         //Chart yoshiChart = chartReader.ReadChartFile(Application.streamingAssetsPath + "/Bixie_Track_1.chart");
-        Chart yoshiChart = chartReader.ReadChartFile(Application.streamingAssetsPath + "/Yoshi.chart");
+        Chart yoshiChart = chartReader.ReadChartFile(Application.streamingAssetsPath + "/Bixie_Track_1_no_holds.chart");
 
         Note[] expertGuitarNotes = yoshiChart.GetNotes("ExpertSingle");
         SpawnNotes(expertGuitarNotes);
@@ -42,14 +42,6 @@ public class ChartLoaderEx : MonoBehaviour
             if (note.ButtonIndexes[i])
             {
                 point = new Vector3(i-2f, 0f, note.Seconds * speed);
-                if (note.IsChord)
-                {
-                    //Debug.Log("IsChord");
-                    point = new Vector3(i - 2f, 1f, note.Seconds * speed);
-                } else if (note.IsHammerOn)
-                {
-                    //Debug.Log("IsHammer");
-                }
                 SpawnPrefab(notePrefabs[i], point);
             }
         }
