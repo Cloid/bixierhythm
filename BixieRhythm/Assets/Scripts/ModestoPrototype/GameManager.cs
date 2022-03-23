@@ -123,40 +123,40 @@ public class GameManager : MonoBehaviour
             case "Perfect":
                 if(playerType == 0)
                 {
-                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_perfcombo");
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/q_happy.png");
                 } else
                 {
-                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_perfcombo");
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/m_happy.png");
                 }
                 break;
             case "Normal":
                 if (playerType == 0)
                 {
-                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_normal");
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/q_neutral.png");
                 }
                 else
                 {
-                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_normal");
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/m_neutral.png");
                 }
                 break;
             case "Bad":
                 if (playerType == 0)
                 {
-                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_hit");
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/q_hit.png");
                 }
                 else
                 {
-                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_hit");
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/m_hit.png");
                 }
                 break;
             default:
                 if (playerType == 0)
                 {
-                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/q_normal");
+                    QinyangPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/q_neutral.png");
                 }
                 else
                 {
-                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/m_normal");
+                    MeiLienPortrait.sprite = Resources.Load<Sprite>("Art/Sprites/Portraits/V2/m_neutral.png");
                 }
                 break;
         }
