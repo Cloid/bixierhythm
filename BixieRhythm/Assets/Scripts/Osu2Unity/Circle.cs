@@ -10,7 +10,8 @@ public class Circle : MonoBehaviour
     private float PosZ = 0;
     [HideInInspector]
     public int PosA = 0;
-    public GameHandler GameHandler;
+    public OsuHandler OsuHandler;
+    public GameManager gameManager;
 
     private Color MainColor, MainColor1, MainColor2, MainLant1; // Circle sprites color
     public GameObject MainApproach, MainFore, MainBack, Lantern1; // Circle objects
@@ -34,7 +35,8 @@ public class Circle : MonoBehaviour
         Appr = MainApproach.GetComponent<SpriteRenderer>();
         Lant1 = Lantern1.GetComponent<Renderer>();
         box = this.GetComponent<BoxCollider>();
-        GameHandler = GameObject.Find("Script Handler").GetComponent<GameHandler>();
+        OsuHandler = GameObject.Find("Script Handler").GetComponent<OsuHandler>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Set circle configuration
@@ -76,7 +78,7 @@ public class Circle : MonoBehaviour
         {
             GotIt = true;
             MainApproach.transform.position = new Vector2(-101, -101);
-            GameHandler.pSounds.PlayOneShot(GameHandler.pHitSound);
+            OsuHandler.pSounds.PlayOneShot(OsuHandler.pHitSound);
             RemoveNow = false;
             this.enabled = true;
         }
@@ -87,10 +89,10 @@ public class Circle : MonoBehaviour
     {
         while (true)
         {
-            if (GameHandler.timer >= PosA + (GameHandler.ApprRate + GameHandler.timeAfterDeath) && !GotIt)
+            if (OsuHandler.timer >= PosA + (OsuHandler.ApprRate + OsuHandler.timeAfterDeath) && !GotIt)
             {
                 Remove();
-                GameHandler.ClickedCount++;
+                OsuHandler.ClickedCount++;
                 break;
             }
             yield return null;
@@ -143,14 +145,15 @@ public class Circle : MonoBehaviour
 
                 if (MainColor1.a <= 0f)
                 {
-                    GameHandler.multHelper("reset");
+                    OsuHandler.multHelper("reset");
 
                     GameObject missObj = Instantiate(missObject) as GameObject;
                     missObj.transform.position = this.transform.position;
+                    gameManager.GLOBAL_noteMissed();
 
                     gameObject.transform.position = new Vector2(-101, -101);
                     this.enabled = false;
-                    Debug.Log("MISSED IT");
+                    //Debug.Log("MISSED IT");
                 }
             }
         }
