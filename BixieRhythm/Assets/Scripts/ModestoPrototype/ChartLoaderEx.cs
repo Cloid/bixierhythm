@@ -41,15 +41,17 @@ public class ChartLoaderEx : MonoBehaviour
         {
             if (note.ButtonIndexes[i])
             {
-                point = new Vector3(i-2f, 0f, note.Seconds * speed);
+                point = new Vector3(i - 2f, 0f, note.Seconds * speed);
                 if (note.IsChord)
                 {
                     //Debug.Log("IsChord");
-                    point = new Vector3(i - 2f, 1f, note.Seconds * speed);
-                } else if (note.IsHammerOn)
+                    point = new Vector3(i - 2f, 0f, note.Seconds * speed);
+                }
+                else if (note.IsHammerOn)
                 {
                     //Debug.Log("IsHammer");
                 }
+
                 SpawnPrefab(notePrefabs[i], point);
             }
         }
