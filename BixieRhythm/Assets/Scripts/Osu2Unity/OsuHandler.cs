@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 
-public class GameHandler : MonoBehaviour
+public class OsuHandler : MonoBehaviour
 {
     // ----------------------------------------------------------------------------
 
@@ -60,9 +60,10 @@ public class GameHandler : MonoBehaviour
     private RaycastHit MainHit;
     private int currentScore = 0;
     [Header("Scoring")]
-    public int scorePerBadNote = 50;
-    public int scorePerGoodNote = 150;
-    public int scorePerPerfectNote = 200;
+    public int scorePerBadNote = 10;
+    public int scorePerGoodNote = 30;
+    public int scorePerPerfectNote = 50;
+    public GameManager gameManager;
 
     public int currMultiplier;
     public int multTracker;
@@ -84,13 +85,15 @@ public class GameHandler : MonoBehaviour
         multiplierText.text = "Multiplier: x" + currMultiplier;
         multThreshold = new int[4] { 2, 4, 6, 8 };
 
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         //string rip = "Assets/Resources/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
         string rip = Application.streamingAssetsPath + "/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
+        //string rip = Application.streamingAssetsPath + "/TestingPurposes.osu";
         ReadCircles(rip);
     }
 
     // MAP READER
-
     void ReadCircles(string path)
     {
         StreamReader reader = new StreamReader(path);
@@ -270,9 +273,10 @@ public class GameHandler : MonoBehaviour
                         //Debug.Log("TIME HIT: " + timer + 
                         //        "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("EARLY");
-                        multHelper("add");
+                        //multHelper("add");
 
-                        currentScore += scorePerGoodNote * currMultiplier;
+                        gameManager.currentGHScore += scorePerGoodNote;
+                        gameManager.GLOBAL_noteHit();
                         scoreText.text = "Score: " + currentScore;
 
                         GameObject goodObj = Instantiate(goodObject) as GameObject;
@@ -293,9 +297,10 @@ public class GameHandler : MonoBehaviour
                         //Debug.Log("TIME HIT: " + timer + 
                         //        "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("LATE");
-                        multHelper("add");
+                        //multHelper("add");
 
-                        currentScore += scorePerBadNote * currMultiplier;
+                        gameManager.currentGHScore += scorePerBadNote;
+                        gameManager.GLOBAL_noteHit();
                         scoreText.text = "Score: " + currentScore;
 
                         GameObject poorObj = Instantiate(poorObject) as GameObject;
@@ -316,9 +321,10 @@ public class GameHandler : MonoBehaviour
                         //Debug.Log("TIME HIT: " + timer + 
                                 //"\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("PERFECT");
-                        multHelper("add");
+                        //multHelper("add");
 
-                        currentScore += scorePerPerfectNote * currMultiplier;
+                        gameManager.currentGHScore += scorePerPerfectNote;
+                        gameManager.GLOBAL_noteHit();
                         scoreText.text = "Score: " + currentScore;
 
                         GameObject perfectObj = Instantiate(perfectObject) as GameObject;
@@ -352,5 +358,9 @@ public class GameHandler : MonoBehaviour
             yield return null;
 
         }
+
+
     }
+
+
 }
