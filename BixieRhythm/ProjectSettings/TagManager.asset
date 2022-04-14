@@ -10,6 +10,7 @@ TagManager:
   - ButtonController
   - Notes
   - MainCameraOsu
+  - ChordNote
   layers:
   - Default
   - TransparentFX

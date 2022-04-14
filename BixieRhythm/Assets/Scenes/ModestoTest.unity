@@ -1337,6 +1337,12 @@ MonoBehaviour:
   - {fileID: 4014135116710048, guid: 43388091a96bce747b5c4c4f122ae893, type: 3}
   - {fileID: 4413157362768838, guid: 86d778fe174d8eb4488e45e7189f9b26, type: 3}
   - {fileID: 4504917627061404, guid: 4dcbeed3cf1d49244a2db3bcfbd18bd8, type: 3}
+  chordPrefabs:
+  - {fileID: 5727009637921112611, guid: 0222cd7597a01534aba219ab43273d6b, type: 3}
+  - {fileID: 2904851238427578188, guid: 5b05c76e2c9668d44b83f8096e6353e0, type: 3}
+  - {fileID: 3218384773091588774, guid: 8b7b27f132cabab4ea4dee8f42c9f1f5, type: 3}
+  - {fileID: 1295472284954756984, guid: e7ca5c97b801b8e4d9a1b247d5b2f5a0, type: 3}
+  - {fileID: 1888971710869202651, guid: bd39582b4056e5e47b93a402fffcb1d7, type: 3}
 --- !u!4 &866616219
 Transform:
   m_ObjectHideFlags: 0
