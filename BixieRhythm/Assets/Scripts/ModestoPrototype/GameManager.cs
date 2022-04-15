@@ -229,7 +229,7 @@ public class GameManager : MonoBehaviour
 
         if(currentPlayerHP > 0)
         {
-            currentPlayerHP -= 5;
+            currentPlayerHP -= 3;
             if (currentPlayerHP < 0) currentPlayerHP = 0;
             updateHPBar();
         }
