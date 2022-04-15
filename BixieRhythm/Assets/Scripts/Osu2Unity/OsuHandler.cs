@@ -6,8 +6,9 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
-public class GameHandler : MonoBehaviour
+public class OsuHandler : MonoBehaviour
 {
     // ----------------------------------------------------------------------------
 
@@ -37,7 +38,7 @@ public class GameHandler : MonoBehaviour
     public static int ApprRate = 600; // Approach rate (in ms)
     private int DelayPos = 0; // Delay song position
     public static int timeAfterDeath = 200;
-    public static int perfectRange = 75;
+    public static int perfectRange = 75; //The higher the more forgiving the lower the more precise
 
     public static int ClickedCount = 0; // Clicked objects counter
     private static int ObjCount = 0; // Spawned objects counter
@@ -57,6 +58,16 @@ public class GameHandler : MonoBehaviour
     private Vector3 MousePosition;
     private Ray MainRay;
     private RaycastHit MainHit;
+    private int currentScore = 0;
+    [Header("Scoring")]
+    public int scorePerBadNote = 10;
+    public int scorePerGoodNote = 30;
+    public int scorePerPerfectNote = 50;
+    public GameManager gameManager;
+
+    public int currMultiplier;
+    public int multTracker;
+    public int[] multThreshold;
 
     private void Start()
     {
@@ -68,14 +79,21 @@ public class GameHandler : MonoBehaviour
         pSounds = Sounds;
         pHitSound = HitSound;
         CircleList = new List<GameObject>();
+        scoreText.text = "Score: " + currentScore;
+
+        currMultiplier = 1;
+        multiplierText.text = "Multiplier: x" + currMultiplier;
+        multThreshold = new int[4] { 2, 4, 6, 8 };
+
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //string rip = "Assets/Resources/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
         string rip = Application.streamingAssetsPath + "/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
+        //string rip = Application.streamingAssetsPath + "/TestingPurposes.osu";
         ReadCircles(rip);
     }
 
     // MAP READER
-
     void ReadCircles(string path)
     {
         StreamReader reader = new StreamReader(path);
@@ -122,71 +140,105 @@ public class GameHandler : MonoBehaviour
 
         while (!reader.EndOfStream)
         {
-            // Uncomment to skip sliders
-            /*while (true)
-            {
-                line = reader.ReadLine();
-                if (line != null)
-                {
-                    if (!line.Contains("|"))
-                        break;
-                }
-                else
-                    break;
-            }*/
-
             line = reader.ReadLine();
-            if (line == null)
+            if (line == null){
+                Debug.Log("LINE IS NULL.");
                 break;
+            }
+            else{
+                //Debug.Log("Current Line: " + line);
+            }
 
-            LineParams = line.Split(','); // Line parameters (X&Y axis, time position)
-
-            // Sorting configuration
-            GameObject CircleObject = Instantiate(Circle, new Vector2(SPAWN, SPAWN), Quaternion.identity);
-            CircleObject.GetComponent<Circle>().Fore.sortingOrder = ForeOrder;
-            CircleObject.GetComponent<Circle>().Back.sortingOrder = BackOrder;
-            CircleObject.GetComponent<Circle>().Appr.sortingOrder = ApproachOrder;
-            CircleObject.transform.localPosition += new Vector3((float) CircleObject.transform.localPosition.x, (float) CircleObject.transform.localPosition.y, (float) Z_Index);
-            
-            //CircleObject.transform.parent = MainCamera.transform;
-            CircleObject.transform.SetAsFirstSibling();
-            
-            
-            ForeOrder--; BackOrder--; ApproachOrder--; Z_Index += 0.01f;
-
-            int FlipY = 384 - int.Parse(LineParams[1]); // Flip Y axis
-
-            int AdjustedX = Mathf.RoundToInt(Screen.height * 1.333333f); // Aspect Ratio
-
-            // Padding
-            float Slices = 8f;
-            float PaddingX = AdjustedX / Slices;
-            float PaddingY = Screen.height / Slices;
-
-            // Resolution set
-            float NewRangeX = ((AdjustedX - PaddingX) - PaddingX);
-            float NewValueX = ((int.Parse(LineParams[0]) * NewRangeX) / 512f) + PaddingX + ((Screen.width - AdjustedX) / 2f);
-            float NewRangeY = Screen.height;
-            float NewValueY = ((FlipY * NewRangeY) / 512f) + PaddingY;
-
-            Vector3 MainPos = MainCamera.ScreenToWorldPoint(new Vector3 (NewValueX, NewValueY, 0)); // Convert from screen position to world position
-            Circle MainCircle = CircleObject.GetComponent<Circle>();
-
-            MainCircle.Set(MainPos.x, MainPos.y, CircleObject.transform.position.z, int.Parse(LineParams[2]) - ApprRate);
+            // x,y,time,type,hitSound,objectParams,hitSample
+            // x,y,time,type,hitSound,curveType|curvePoints,slides,length,edgeSounds,edgeSets,hitSample
+            LineParams = line.Split(',','|',':'); // Line parameters (X&Y axis, time position)
+            //Debug.Log(LineParams.Length);
 
             
-            CircleList.Add(CircleObject);
+            if(Regex.IsMatch(LineParams[5], @"^[a-zA-Z]+$")){ //Check if this is either a click or a slider
+                //Debug.Log("String has a letter");
+
+            }
+            else{
+                //Debug.Log("No Letter");
+                
+                // Sorting configuration
+                GameObject CircleObject = Instantiate(Circle, new Vector2(SPAWN, SPAWN), Quaternion.identity);
+                CircleObject.GetComponent<Circle>().Fore.sortingOrder = ForeOrder;
+                CircleObject.GetComponent<Circle>().Back.sortingOrder = BackOrder;
+                CircleObject.GetComponent<Circle>().Appr.sortingOrder = ApproachOrder;
+                CircleObject.transform.localPosition += new Vector3((float) CircleObject.transform.localPosition.x, (float) CircleObject.transform.localPosition.y, (float) Z_Index);
+                CircleObject.transform.SetAsFirstSibling();
+                
+                
+                ForeOrder--; BackOrder--; ApproachOrder--; Z_Index += 0.01f;
+
+                int FlipY = 384 - int.Parse(LineParams[1]); // Flip Y axis
+                int AdjustedX = Mathf.RoundToInt(Screen.height * 1.333333f); // Aspect Ratio
+
+                // Padding
+                float Slices = 8f;
+                float PaddingX = AdjustedX / Slices;
+                float PaddingY = Screen.height / Slices;
+
+                // Resolution set
+                float NewRangeX = ((AdjustedX - PaddingX) - PaddingX);
+                float NewValueX = ((int.Parse(LineParams[0]) * NewRangeX) / 512f) + PaddingX + ((Screen.width - AdjustedX) / 2f);
+                float NewRangeY = Screen.height;
+                float NewValueY = ((FlipY * NewRangeY) / 512f) + PaddingY;
+
+                Vector3 MainPos = MainCamera.ScreenToWorldPoint(new Vector3 (NewValueX, NewValueY, 0)); // Convert from screen position to world position
+                Circle MainCircle = CircleObject.GetComponent<Circle>();
+
+                MainCircle.Set(MainPos.x, MainPos.y, CircleObject.transform.position.z, int.Parse(LineParams[2]) - ApprRate);
+
+                
+                CircleList.Add(CircleObject);
+            }
+
         }
         GameStart();
     }
+
+    //private void AddSliderToScene{
+
+    //}
 
     // END MAP READER
 	
     private void GameStart()
     {
-        Application.targetFrameRate = -1; // Unlimited framerate
+        Application.targetFrameRate = 60; // Unlimited framerate
         Music.Play();
         StartCoroutine(UpdateRoutine()); // Using coroutine instead of Update()
+    }
+
+    public void multHelper(string mode){
+
+        switch (mode)
+        {
+            case "add":
+                if (currMultiplier - 1 < multThreshold.Length)
+                {
+                    multTracker++;
+
+                    if (multThreshold[currMultiplier - 1] <= multTracker)
+                    {
+                        currMultiplier++;
+                        multTracker = 0;
+                    }
+                }
+                multiplierText.text = "Multiplier: x" + currMultiplier;
+                break;
+
+            case "reset":
+                currMultiplier = 1;
+                multTracker = 0;
+                multiplierText.text = "Multiplier: x" + currMultiplier;
+                break;
+
+        }
+        
     }
 
     private IEnumerator UpdateRoutine()
@@ -214,13 +266,18 @@ public class GameHandler : MonoBehaviour
             
             if (Physics.Raycast(MainRay, out MainHit))
             {
-                // EARLY HIT ??
+                // EARLY HIT
                 if (MainHit.collider.name == "Circle(Clone)" && (timer + perfectRange) < (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate))
                 {
                     if (Input.GetMouseButtonDown(0)){
                         //Debug.Log("TIME HIT: " + timer + 
                         //        "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("EARLY");
+                        //multHelper("add");
+
+                        gameManager.currentGHScore += scorePerGoodNote;
+                        gameManager.GLOBAL_noteHit();
+                        scoreText.text = "Score: " + currentScore;
 
                         GameObject goodObj = Instantiate(goodObject) as GameObject;
                         goodObj.transform.position = MainHit.transform.position;
@@ -228,6 +285,7 @@ public class GameHandler : MonoBehaviour
                         MainHit.collider.gameObject.GetComponent<Circle>().Got();
                         MainHit.collider.enabled = false;
                         ClickedCount++;
+                        
                     }
                     
                 }
@@ -239,6 +297,11 @@ public class GameHandler : MonoBehaviour
                         //Debug.Log("TIME HIT: " + timer + 
                         //        "\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("LATE");
+                        //multHelper("add");
+
+                        gameManager.currentGHScore += scorePerBadNote;
+                        gameManager.GLOBAL_noteHit();
+                        scoreText.text = "Score: " + currentScore;
 
                         GameObject poorObj = Instantiate(poorObject) as GameObject;
                         poorObj.transform.position = MainHit.transform.position;
@@ -258,6 +321,11 @@ public class GameHandler : MonoBehaviour
                         //Debug.Log("TIME HIT: " + timer + 
                                 //"\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("PERFECT");
+                        //multHelper("add");
+
+                        gameManager.currentGHScore += scorePerPerfectNote;
+                        gameManager.GLOBAL_noteHit();
+                        scoreText.text = "Score: " + currentScore;
 
                         GameObject perfectObj = Instantiate(perfectObject) as GameObject;
                         perfectObj.transform.position = MainHit.transform.position;
@@ -268,8 +336,6 @@ public class GameHandler : MonoBehaviour
                     }
                     
                 }
-
-                
 
                 // // LATE HIT ??
                 // else if (MainHit.collider.name == "Circle(Clone)" && timer > MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate)
@@ -292,5 +358,9 @@ public class GameHandler : MonoBehaviour
             yield return null;
 
         }
+
+
     }
+
+
 }

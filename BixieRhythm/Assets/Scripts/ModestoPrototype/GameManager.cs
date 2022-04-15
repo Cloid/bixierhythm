@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
     public bool GHIsOnChord;
 
     // Private Variables
-    private int currentGHScore = 0;
-    private int currentOSScore = 0;
+    public int currentGHScore = 0;
+    //private int currentOSScore = 0;
     private float maxPlayerHP = 100;
     private float currentPlayerHP = 100;
         // Note Accuracy - Accuracy variables
@@ -107,6 +107,32 @@ public class GameManager : MonoBehaviour
         GHComboText.text = "Combo: " + multGHTracker;
         multiplierText.text = "Multiplier: x" + currGHMultiplier;
         currentGHScore += scorePerNote * currGHMultiplier;
+        GHScoreText.text = "Score: " + currentGHScore;
+
+        if(currentPlayerHP < 100)
+        {
+            currentPlayerHP += 1;
+            updateHPBar();
+        }
+    }
+
+    public void GLOBAL_noteHit(){
+
+        if (currGHMultiplier - 1 < multThreshold.Length)
+        {
+            multGHTracker++;
+            //Debug.Log(multGHTracker);
+
+            if (multThreshold[currGHMultiplier - 1] <= multGHTracker)
+            {
+                currGHMultiplier++;
+                multGHTracker = 0;
+                //Debug.Log("You advanced to next multiplier!");
+            }
+        }
+
+        GHComboText.text = "Combo: " + multGHTracker;
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
         GHScoreText.text = "Score: " + currentGHScore;
 
         if(currentPlayerHP < 100)
@@ -222,6 +248,15 @@ public class GameManager : MonoBehaviour
         GameObject clone = Instantiate(MissedNote, other.transform.position, MissedNote.transform.rotation);
         noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
+        GLOBAL_noteMissed();
+
+        // Note Accuracy - Updates accuracy value if 
+        /* currentNotes -= 1;
+        noteAccuracy = Mathf.FloorToInt((currentNotes / maxNotes) * 100);
+        accText.text = "Accuracy: " + noteAccuracy + "%"; */
+    }
+
+    public void GLOBAL_noteMissed(){
         currGHMultiplier = 1;
         multGHTracker = 0;
         GHComboText.text = "Combo: " + multGHTracker;
@@ -233,10 +268,5 @@ public class GameManager : MonoBehaviour
             if (currentPlayerHP < 0) currentPlayerHP = 0;
             updateHPBar();
         }
-
-        // Note Accuracy - Updates accuracy value if 
-        /* currentNotes -= 1;
-        noteAccuracy = Mathf.FloorToInt((currentNotes / maxNotes) * 100);
-        accText.text = "Accuracy: " + noteAccuracy + "%"; */
     }
 }

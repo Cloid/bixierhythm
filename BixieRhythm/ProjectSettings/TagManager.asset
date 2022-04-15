@@ -49,9 +49,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Lanterns
-    uniqueID: 1655534165
-    locked: 0
   - name: Terrain
     uniqueID: 2489284975
     locked: 0
@@ -60,4 +57,7 @@ TagManager:
     locked: 0
   - name: SecondCam
     uniqueID: 3366536019
+    locked: 0
+  - name: Lanterns
+    uniqueID: 1655534165
     locked: 0

@@ -50,10 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PosA: 0
+  OsuHandler: {fileID: 0}
+  gameManager: {fileID: 0}
   MainApproach: {fileID: 1202609847560596}
   MainFore: {fileID: 1205178246552746}
   MainBack: {fileID: 1646639664417182}
   Lantern1: {fileID: 4078404749151967690}
+  missObject: {fileID: 7097402668423431581, guid: 3a49b3ed8725be848a6b6332b47abf00, type: 3}
   Fore: {fileID: 0}
   Back: {fileID: 0}
   Appr: {fileID: 0}
@@ -80,7 +83,7 @@ SortingGroup:
   m_GameObject: {fileID: 1048798711757196}
   m_Enabled: 1
   m_SortingLayerID: 1448740117
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
 --- !u!1 &1202609847560596
 GameObject:
@@ -376,18 +379,18 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4078404749151967690}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cdcec2345c1d1af4da10b1c5d9cbff65, type: 2}
+  - {fileID: 2100000, guid: 3b2c736dc40146c4a92ffbca0e77c7ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
