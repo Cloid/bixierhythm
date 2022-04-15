@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject BadNote;
     public GameObject MissedNote;
     public GameObject GHPlayer;
+    public bool GHIsOnChord;
 
     // Private Variables
     private int currentGHScore = 0;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         multiplierText.text = "Multiplier: x" + currGHMultiplier;
         multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
+        GHIsOnChord = false;
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
         // StartCoroutine(UpdateAcc());
@@ -164,9 +166,9 @@ public class GameManager : MonoBehaviour
 
     // Different types of hits based on individual note accuracy
     // Instantiates note feedback and then deletes it
-    public void GHBadHit()
+    public void GHBadHit(float modifier)
     {
-        currentGHScore += scorePerBadNote * currGHMultiplier;
+        currentGHScore += Mathf.FloorToInt((scorePerBadNote * modifier) * currGHMultiplier);
         ChangePortrait("Bad", 0);
         GameObject clone = Instantiate(BadNote, GHPlayer.transform.GetChild(7).position, BadNote.transform.rotation);
         noteFeedbackTranslate(clone);
@@ -174,9 +176,9 @@ public class GameManager : MonoBehaviour
         NoteHit();
     }
 
-    public void GHNormalHit()
+    public void GHNormalHit(float modifier)
     {
-        currentGHScore += scorePerNote * currGHMultiplier;
+        currentGHScore += Mathf.FloorToInt((scorePerNote * modifier) * currGHMultiplier);
         ChangePortrait("Normal", 0);
         GameObject clone = Instantiate(OkayNote, GHPlayer.transform.GetChild(7).position, OkayNote.transform.rotation);
         noteFeedbackTranslate(clone);
@@ -184,18 +186,18 @@ public class GameManager : MonoBehaviour
         NoteHit();
     }
 
-    public void GHGoodHit()
+    public void GHGoodHit(float modifier)
     {
-        currentGHScore += scorePerGoodNote * currGHMultiplier;
+        currentGHScore += Mathf.FloorToInt((scorePerGoodNote * modifier) * currGHMultiplier);
         ChangePortrait("Normal", 0);
         GameObject clone = Instantiate(GreatNote, GHPlayer.transform.GetChild(7).position, GreatNote.transform.rotation);
         noteFeedbackTranslate(clone);
         Destroy(clone, 1f);
         NoteHit();
     }
-    public void GHPerfectHit()
+    public void GHPerfectHit(float modifier)
     {
-        currentGHScore += scorePerPerfectNote * currGHMultiplier;
+        currentGHScore += Mathf.FloorToInt((scorePerPerfectNote * modifier) * currGHMultiplier);
         ChangePortrait("Perfect", 0);
         GameObject clone = Instantiate(GreatNote, GHPlayer.transform.GetChild(7).position, GreatNote.transform.rotation);
         noteFeedbackTranslate(clone);
@@ -208,7 +210,6 @@ public class GameManager : MonoBehaviour
     {
         clone.GetComponent<Rigidbody>().AddForce((Vector3.forward) + (Vector3.up * 0.5f), ForceMode.Impulse);
         //Debug.Log(clone.GetComponent<Rigidbody>().velocity);
-
     }
 
     // If a player misses a note, then the HP count is decreased.
@@ -229,6 +230,7 @@ public class GameManager : MonoBehaviour
         if(currentPlayerHP > 0)
         {
             currentPlayerHP -= 5;
+            if (currentPlayerHP < 0) currentPlayerHP = 0;
             updateHPBar();
         }
 

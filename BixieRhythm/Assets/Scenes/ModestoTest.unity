@@ -1778,6 +1778,7 @@ MonoBehaviour:
   BadNote: {fileID: 6460601014578205897, guid: b4b16af629577e4478c34eb7f42141e1, type: 3}
   MissedNote: {fileID: 7402875657515216737, guid: a139bb8490ee61344b92ac13f8a4d2e7, type: 3}
   GHPlayer: {fileID: 1424401790}
+  GHIsOnChord: 0
 --- !u!1 &1405421912
 GameObject:
   m_ObjectHideFlags: 0

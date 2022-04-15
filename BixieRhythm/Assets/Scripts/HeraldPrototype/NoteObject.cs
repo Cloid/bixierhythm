@@ -30,14 +30,14 @@ public class NoteObject : MonoBehaviour
                 if (Mathf.Abs(transform.position.y) > 1f)
                 {
                     Debug.Log("Normal Hit!");
-                    GameManager.instance.GHNormalHit();
+                    GameManager.instance.GHNormalHit(1f);
                 } else if (Mathf.Abs(transform.position.y) > 0.75f)
                 {
                     Debug.Log("Good Hit!");
-                    GameManager.instance.GHGoodHit();
+                    GameManager.instance.GHGoodHit(1.5f);
                 } else if (Mathf.Abs(transform.position.y) > 0.5f) {
                     Debug.Log("Perfect Hit!");
-                    GameManager.instance.GHPerfectHit();
+                    GameManager.instance.GHPerfectHit(2f);
                 }
             }
         }

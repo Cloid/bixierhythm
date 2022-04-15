@@ -25,6 +25,7 @@ public class ChartLoaderEx : MonoBehaviour
     // Records all top chord notes in a pair
     private List<Note> topChordNotes = new List<Note>();
 
+    // Records all leftover bottom chord notes during SpawnChord()
     private List<Note> leftoverBotChordNotes = new List<Note>();
 
     // Start is called before the first frame update
@@ -58,7 +59,7 @@ public class ChartLoaderEx : MonoBehaviour
     /// </summary>
     public void SpawnChords()
     {
-        Debug.Log("Spawning chords");
+        //Debug.Log("Spawning chords");
         // Sets botChordIndex to the start of the chordNotes list (which was already generated in SpawnNotes) while topChordIndex is empty
         int botChordIndex = chordNotes[0].Index;
         int topChordIndex = 0;
@@ -120,14 +121,14 @@ public class ChartLoaderEx : MonoBehaviour
             if (note.ButtonIndexes[i])
             {
                 point = new Vector3(i - 2f, 0f, note.Seconds * speed);
-                string noteTag = "Notes";
+                string noteTag = "Note";
                 // If note is a chord, then tag it as a chord and add it to the chordNotes list
                 if (note.IsChord)
                 {
                     //Debug.Log(note);
-                    point = new Vector3(i - 2f, 1f, note.Seconds * speed);
-                    noteTag = "ChordNote";
+                    point = new Vector3(i - 2f, 0f, note.Seconds * speed);
                     // Add chord note to list
+                    noteTag = "ChordNote";
                     chordNotes.Add(note);
                     SpawnPrefab(notePrefabs[i], noteTag, point, new Vector3(1, 1, 1));
                 }
@@ -136,7 +137,7 @@ public class ChartLoaderEx : MonoBehaviour
                     // Debug.Log("Is Hammer");
                     // noteTag = "Hammer";
                 }
-                //SpawnPrefab(notePrefabs[i], noteTag, point, new Vector3 (1, 1, 1));
+                SpawnPrefab(notePrefabs[i], noteTag, point, new Vector3 (1, 1, 1));
             }
         }
     }
@@ -147,7 +148,7 @@ public class ChartLoaderEx : MonoBehaviour
     /// </summary>
     public void SpawnChord(List<Note> botChords, List<Note> topChords)
     {
-        Debug.Log("Spawn Chord");
+        //Debug.Log("Spawn Chord");
         Note topNote;
         Note botNote;
         // Goes through the topChord list 
@@ -170,13 +171,13 @@ public class ChartLoaderEx : MonoBehaviour
                 for (int j = 0; j < topNote.ButtonIndexes.Length; j++)
                 {
                     // If topNote and botNote match indexes, then spawn note
-                    Debug.Log(topNote.ButtonIndexes[j] + " " + botNote.ButtonIndexes[j]);
+                    //Debug.Log(topNote.ButtonIndexes[j] + " " + botNote.ButtonIndexes[j]);
                     if (topNote.ButtonIndexes[j] && botNote.ButtonIndexes[j])
                     {
-                        Debug.Log("Chord being created at " + j);
-                        Vector3 chordPoint = new Vector3(j - 2f, 1f, ((botNote.Seconds + topNote.Seconds) / 2) * speed);
+                        //Debug.Log("Chord being created at " + j);
+                        Vector3 chordPoint = new Vector3(j - 2f, 0f, ((botNote.Seconds + topNote.Seconds) / 2) * speed);
                         //Debug.Log(botNote.Seconds);
-                        SpawnPrefab(chordPrefabs[j], "Chord", chordPoint, new Vector3(0.2f, (botNote.Seconds-topNote.Seconds) * 1.5f, 1));
+                        SpawnPrefab(chordPrefabs[j], "Chord", chordPoint, new Vector3(0.2f, Mathf.Abs(botNote.Seconds-topNote.Seconds) * 1.5f, 1));
                     }
                     // If topNote is true but botNote is not true, then there is a mismatch and we must treat it as a leftover botNote
                     else if (topNote.ButtonIndexes[j] && !botNote.ButtonIndexes[j])
@@ -186,38 +187,6 @@ public class ChartLoaderEx : MonoBehaviour
                 }
             }
         }
-
-
-
-        // V2
-        // Goes through the botChord list 
-        /*for (int i = 0; i < botChords.Count; i++)
-        {
-            Note botNote = botChords[i];
-            Note topNote = topChords[i];
-
-            Debug.Log(botNote);
-            Debug.Log(topNote);
-            for(int j = 0; j < botNote.ButtonIndexes.Length; j++)
-            {
-                if (botNote.ButtonIndexes[j])
-                {
-                    Vector3 chordPoint = new Vector3(j - 2f, 1f, ((botNote.Seconds + topNote.Seconds)/2) * speed);
-                    //Debug.Log(botNote.Seconds);
-                    SpawnPrefab(chordPrefabs[j], "Notes", chordPoint, new Vector3(0.2f, 1, 2));
-                }
-            }
-        }*/
-
-        // V1
-        /*for (int i = 0; i < note.ButtonIndexes.Length; i++)
-        {
-            if (note.ButtonIndexes[i])
-            {
-                Vector3 chordPoint = new Vector3(i - 2f, 1f, (note.Seconds + 1f) * speed);
-                SpawnPrefab(chordPrefabs[i], "Notes", chordPoint, new Vector3(0.5f, 1, 2));
-            }
-        }*/
     }
 
     /// <summary>

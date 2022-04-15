@@ -8,8 +8,9 @@ TagManager:
   - NoteButton
   - Canvas
   - ButtonController
-  - Notes
   - MainCameraOsu
+  - Chord
+  - Note
   - ChordNote
   layers:
   - Default
