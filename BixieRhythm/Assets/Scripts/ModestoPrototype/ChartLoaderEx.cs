@@ -34,7 +34,7 @@ public class ChartLoaderEx : MonoBehaviour
         chartReader = new ChartReader();
         //Chart yoshiChart = chartReader.ReadChartFile("Assets/ChartLoader/ChartLoader/Songs/Yoshi/Yoshi.chart");
         //Chart yoshiChart = chartReader.ReadChartFile(Application.streamingAssetsPath + "/Bixie_Track_1.chart");
-        Chart yoshiChart = chartReader.ReadChartFile(Application.streamingAssetsPath + "/Bixie_Track_1_no_holds.chart");
+        Chart yoshiChart = chartReader.ReadChartFile(Application.streamingAssetsPath + "/Yoshi.chart");
 
         Note[] expertGuitarNotes = yoshiChart.GetNotes("ExpertSingle");
         SpawnNotes(expertGuitarNotes);
@@ -50,7 +50,10 @@ public class ChartLoaderEx : MonoBehaviour
             SpawnNote(note);
         }
 
-        SpawnChords();
+        if (chordNotes.Count > 0)
+        {
+            SpawnChords();
+        }
     }
 
     // Original Function
@@ -63,6 +66,7 @@ public class ChartLoaderEx : MonoBehaviour
         // Sets botChordIndex to the start of the chordNotes list (which was already generated in SpawnNotes) while topChordIndex is empty
         int botChordIndex = chordNotes[0].Index;
         int topChordIndex = 0;
+
         for (int i = 0; i < chordNotes.Count; i++)
         {
             // -- Bottom Chord --
