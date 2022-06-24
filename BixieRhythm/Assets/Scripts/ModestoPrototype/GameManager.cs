@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public GameObject MissedNote;
     public GameObject GHPlayer;
     public bool GHIsOnChord;
+    public Image Tutorial;
+    public bool isTutorialActive;
+    public bool isGamePaused;
 
     // Private Variables
     public int currentGHScore = 0;
@@ -48,6 +51,9 @@ public class GameManager : MonoBehaviour
     private int multGHTracker;
     private int[] multThreshold;
 
+    // Tutorial time value
+    private float tutorialTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +64,8 @@ public class GameManager : MonoBehaviour
         multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
         GHIsOnChord = false;
+        isTutorialActive = true;
+        tutorialTime = Time.unscaledTime;
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
         // StartCoroutine(UpdateAcc());
@@ -66,7 +74,19 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isTutorialActive)
+        {
+            isGamePaused = true;
+            PauseGame();
+        }
 
+        if((Time.unscaledTime - tutorialTime) > 5f && isTutorialActive)
+        {
+            isTutorialActive = false;
+            isGamePaused = false;
+            PauseGame();
+            Tutorial.enabled = false;
+        }
     }
 
     // Note Accuracy - Determines overall accuracy of the player based on how many notes were missed by the player vs the notes spawned by ChartEditor
@@ -78,6 +98,20 @@ public class GameManager : MonoBehaviour
         noteAccuracy = Mathf.FloorToInt((currentNotes / maxNotes) * 100);
         accText.text = "Accuracy: " + noteAccuracy + "%";
     } */
+
+    // Pauses the game 
+    public void PauseGame()
+    {
+        if (isGamePaused)
+        {
+            Time.timeScale = 0f;
+            AudioListener.pause = true;
+        } else
+        {
+            Time.timeScale = 1f;
+            AudioListener.pause = false;
+        }
+    }
 
     // Helper function that changes the HP bar
     public void updateHPBar()
