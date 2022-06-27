@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
             PauseGame();
         }
 
-        if((Time.unscaledTime - tutorialTime) > 5f && isTutorialActive)
+        if(Input.GetMouseButtonDown(0) && isTutorialActive)
         {
             isTutorialActive = false;
             isGamePaused = false;
