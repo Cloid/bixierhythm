@@ -849,6 +849,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8788277868358675756}
+  - component: {fileID: 587966676742523524}
   m_Layer: 0
   m_Name: imp_run_animation
   m_TagString: Untagged
@@ -872,6 +873,25 @@ Transform:
   m_Father: {fileID: 4400627473677722}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 36.063, y: -30.925, z: -16.858}
+--- !u!95 &587966676742523524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7684295242074805936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8860b2d0048f8143a2734c53a17ce53, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7935015811189135474
 GameObject:
   m_ObjectHideFlags: 0
