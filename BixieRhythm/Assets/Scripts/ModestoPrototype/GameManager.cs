@@ -29,11 +29,13 @@ public class GameManager : MonoBehaviour
     public GameObject MissedNote;
     public GameObject GHPlayer;
     public bool GHIsOnChord;
-    public Image Tutorial;
     public bool isTutorialActive;
     public bool isGamePaused;
 
     // Private Variables
+    private GameObject Tutorial;
+    private GameObject Continue;
+
     public int currentGHScore = 0;
     //private int currentOSScore = 0;
     private float maxPlayerHP = 100;
@@ -64,8 +66,12 @@ public class GameManager : MonoBehaviour
         multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
         GHIsOnChord = false;
-        isTutorialActive = true;
         tutorialTime = Time.unscaledTime;
+        if (isTutorialActive)
+        {
+            Tutorial = GameObject.Find("Tutorial");
+            Continue = GameObject.Find("Continue");
+        }
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
         // StartCoroutine(UpdateAcc());
@@ -80,12 +86,13 @@ public class GameManager : MonoBehaviour
             PauseGame();
         }
 
-        if((Time.unscaledTime - tutorialTime) > 5f && isTutorialActive)
+        if(Input.GetMouseButtonDown(0) && isTutorialActive)
         {
             isTutorialActive = false;
             isGamePaused = false;
             PauseGame();
-            Tutorial.enabled = false;
+            Tutorial.SetActive(false);
+            Continue.SetActive(false);
         }
 
         if (Input.GetKey("escape"))
