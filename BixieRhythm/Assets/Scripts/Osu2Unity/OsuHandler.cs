@@ -263,7 +263,6 @@ public class OsuHandler : MonoBehaviour
             }
 
             // Check if cursor is over object 
-            
             if (Physics.Raycast(MainRay, out MainHit))
             {
                 // EARLY HIT

@@ -55,12 +55,12 @@ MonoBehaviour:
   MainApproach: {fileID: 1202609847560596}
   MainFore: {fileID: 1205178246552746}
   MainBack: {fileID: 1646639664417182}
-  Lantern1: {fileID: 4078404749151967690}
+  LanternGameObj: {fileID: 4078404749151967690}
   missObject: {fileID: 7097402668423431581, guid: 3a49b3ed8725be848a6b6332b47abf00, type: 3}
   Fore: {fileID: 0}
   Back: {fileID: 0}
   Appr: {fileID: 0}
-  Lant1: {fileID: 2434667863901504043}
+  LanternRenderer: {fileID: 0}
 --- !u!65 &65712764148315052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 1448740117
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
 --- !u!1 &1202609847560596
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4a0ff880457d21846b94a3c18c62a7be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01906ab9f52acc54cb52c047648bff73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0

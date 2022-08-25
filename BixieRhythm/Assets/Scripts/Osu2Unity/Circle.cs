@@ -13,15 +13,15 @@ public class Circle : MonoBehaviour
     public OsuHandler OsuHandler;
     public GameManager gameManager;
 
-    private Color MainColor, MainColor1, MainColor2, MainLant1; // Circle sprites color
-    public GameObject MainApproach, MainFore, MainBack, Lantern1; // Circle objects
+    private Color MainColor, MainColor1, MainColor2, LanternColor; // Circle sprites color
+    public GameObject MainApproach, MainFore, MainBack, LanternGameObj; // Circle objects
 
     public GameObject missObject; // Circle Object
 
     [HideInInspector]
     public SpriteRenderer Fore, Back, Appr; // Circle sprites
     [HideInInspector]
-    public Renderer Lant1;
+    public Renderer LanternRenderer;
     private BoxCollider box;
 
     // Checker stuff
@@ -33,7 +33,7 @@ public class Circle : MonoBehaviour
         Fore = MainFore.GetComponent<SpriteRenderer>();
         Back = MainBack.GetComponent<SpriteRenderer>();
         Appr = MainApproach.GetComponent<SpriteRenderer>();
-        Lant1 = Lantern1.GetComponent<Renderer>();
+        LanternRenderer = LanternGameObj.GetComponent<Renderer>();
         box = this.GetComponent<BoxCollider>();
         OsuHandler = GameObject.Find("Script Handler").GetComponent<OsuHandler>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -49,7 +49,7 @@ public class Circle : MonoBehaviour
         MainColor = Appr.color;
         MainColor1 = Fore.color;
         MainColor2 = Back.color;
-        MainLant1 = Lant1.material.color;
+        LanternColor = LanternRenderer.material.color;
     }
 
     // Spawning the circle
@@ -99,7 +99,7 @@ public class Circle : MonoBehaviour
         }
     }
 
-    // Main Update
+    // Main Update for circles
     private void Update ()
     {
         // Approach Circle modifier
@@ -109,12 +109,12 @@ public class Circle : MonoBehaviour
             MainColor.a += 4f * Time.deltaTime;
             MainColor1.a += 4f * Time.deltaTime;
             MainColor2.a += 4f * Time.deltaTime;
-            MainLant1.a += 4f * Time.deltaTime;
+            //MainLant1.a += 4f * Time.deltaTime;
 
             Fore.color = MainColor1;
             Back.color = MainColor2;
             Appr.color = MainColor;
-            Lant1.material.color = MainLant1;
+            //Lant1.material.color = MainLant1;
 
         }
         // If circle wasn't clicked
@@ -133,15 +133,15 @@ public class Circle : MonoBehaviour
                 box.enabled = false;
                 MainColor1.a -= 10f * Time.deltaTime;
                 MainColor2.a -= 10f * Time.deltaTime;
-                MainLant1.a -= 10f * Time.deltaTime;
+                LanternColor.a -= 3f * Time.deltaTime;
 
                 MainFore.transform.localPosition += (Vector3.down * 2) * Time.deltaTime;
                 MainBack.transform.localPosition += Vector3.down * Time.deltaTime;
-                Lantern1.transform.localPosition += (Vector3.down * 2) * Time.deltaTime;
+                LanternGameObj.transform.localPosition += (Vector3.down * 2) * Time.deltaTime;
 
                 Fore.color = MainColor1;
                 Back.color = MainColor2;
-                Lant1.material.color = MainLant1;
+                LanternRenderer.material.color = LanternColor;
 
                 if (MainColor1.a <= 0f)
                 {
@@ -162,15 +162,16 @@ public class Circle : MonoBehaviour
         {
             MainColor1.a -= 10f * Time.deltaTime;
             MainColor2.a -= 10f * Time.deltaTime;
-            MainLant1.a -= 10f * Time.deltaTime;
+            LanternColor.a -= 3f * Time.deltaTime;
 
             MainFore.transform.localScale += new Vector3(2, 2, 0) * Time.deltaTime;
             MainBack.transform.localScale += new Vector3(2, 2, 0) * Time.deltaTime;
-            Lantern1.transform.localScale += new Vector3(3/2, 3/2, 3/2) * Time.deltaTime;
+            LanternGameObj.transform.localScale += new Vector3(3/2, 3/2, 3/2) * Time.deltaTime;
 
             Fore.color = MainColor1;
             Back.color = MainColor2;
-            Lant1.material.color = MainLant1;
+            LanternRenderer.material.color = LanternColor;
+
             if (MainColor1.a <= 0f)
             {
                 gameObject.transform.position = new Vector2(-101, -101);
