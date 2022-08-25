@@ -87,6 +87,11 @@ public class GameManager : MonoBehaviour
             PauseGame();
             Tutorial.enabled = false;
         }
+
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     // Note Accuracy - Determines overall accuracy of the player based on how many notes were missed by the player vs the notes spawned by ChartEditor
