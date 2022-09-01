@@ -217,7 +217,7 @@ ParticleSystem:
   serializedVersion: 7
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4933,7 +4933,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15783524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: -2.197, y: 1.87, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5643,7 +5643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7946889840019637183, guid: b29b7754273e7d74fbca5f1c8af77f38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 160.4
+      value: 152.7
       objectReference: {fileID: 0}
     - target: {fileID: 7946889840019637183, guid: b29b7754273e7d74fbca5f1c8af77f38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6337,7 +6337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7946889840019637183, guid: b29b7754273e7d74fbca5f1c8af77f38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 182
+      value: 166.9
       objectReference: {fileID: 0}
     - target: {fileID: 7946889840019637183, guid: b29b7754273e7d74fbca5f1c8af77f38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6541,7 +6541,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b2c736dc40146c4a92ffbca0e77c7ff, type: 2}
+  - {fileID: 2100000, guid: ad7ce727a68a61f4897679b81da7b344, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7745,7 +7745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1496778242
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8017,7 +8017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1542832088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8595,8 +8595,6 @@ MonoBehaviour:
   MissedNote: {fileID: 7402875657515216737, guid: a139bb8490ee61344b92ac13f8a4d2e7, type: 3}
   GHPlayer: {fileID: 327439145}
   GHIsOnChord: 0
-  Tutorial: {fileID: 1496778243}
-  Continue: {fileID: 0}
   isTutorialActive: 0
   isGamePaused: 0
   currentGHScore: 0
@@ -8742,6 +8740,7 @@ MonoBehaviour:
   currMultiplier: 0
   multTracker: 0
   multThreshold: 
+  cursor: {fileID: 2800000, guid: 3bd29c1266350384197fc0481239e70f, type: 3}
 --- !u!4 &1891330938
 Transform:
   m_ObjectHideFlags: 0
@@ -9352,7 +9351,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 35.78
+  far clip plane: 29.51
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -9643,7 +9642,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206186632354422634}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 35.3, y: 3.9, z: -2.23}
+  m_LocalPosition: {x: -42.76, y: 3.9, z: -2.23}
   m_LocalScale: {x: 0.72642016, y: 0.72642004, z: 0.5428481}
   m_Children: []
   m_Father: {fileID: 0}

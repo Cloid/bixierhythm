@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MoveTerrain : MonoBehaviour
 {
+    public float teleportDistance;
+
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player"){
             Debug.Log("MOVING");
-            this.gameObject.transform.position += Vector3.forward * 62.0f;
+            this.gameObject.transform.position += Vector3.forward * teleportDistance;
         }
     }
 }

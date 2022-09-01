@@ -34,6 +34,7 @@ public class Circle : MonoBehaviour
         Back = MainBack.GetComponent<SpriteRenderer>();
         Appr = MainApproach.GetComponent<SpriteRenderer>();
         LanternRenderer = LanternGameObj.GetComponent<Renderer>();
+
         box = this.GetComponent<BoxCollider>();
         OsuHandler = GameObject.Find("Script Handler").GetComponent<OsuHandler>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -42,14 +43,15 @@ public class Circle : MonoBehaviour
     // Set circle configuration
     public void Set(float x, float y, float z, int a)
     {
-        PosX = x;
-        PosY = y;
-        PosZ = z;
-        PosA = a;
         MainColor = Appr.color;
         MainColor1 = Fore.color;
         MainColor2 = Back.color;
         LanternColor = LanternRenderer.material.color;
+
+        PosX = x;
+        PosY = y;
+        PosZ = z;
+        PosA = a;   
     }
 
     // Spawning the circle
@@ -109,11 +111,13 @@ public class Circle : MonoBehaviour
             MainColor.a += 4f * Time.deltaTime;
             MainColor1.a += 4f * Time.deltaTime;
             MainColor2.a += 4f * Time.deltaTime;
+            if(LanternColor.a < 1f) LanternColor.a += 4f * Time.deltaTime;
             //MainLant1.a += 4f * Time.deltaTime;
 
             Fore.color = MainColor1;
             Back.color = MainColor2;
             Appr.color = MainColor;
+            LanternRenderer.material.color = LanternColor;
             //Lant1.material.color = MainLant1;
 
         }

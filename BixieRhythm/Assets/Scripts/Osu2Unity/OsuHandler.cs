@@ -69,8 +69,13 @@ public class OsuHandler : MonoBehaviour
     public int multTracker;
     public int[] multThreshold;
 
+    [SerializeField] Texture2D cursor;
+
     private void Start()
     {
+        Vector2 hotSpot = new Vector2(cursor.width / 2f, cursor.height / 2f);
+        Cursor.SetCursor(cursor, hotSpot, CursorMode.ForceSoftware);
+
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Music = GameObject.Find("Music Source").GetComponent<AudioSource>();
         Sounds = gameObject.GetComponent<AudioSource>();
@@ -90,6 +95,7 @@ public class OsuHandler : MonoBehaviour
         //string rip = "Assets/Resources/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
         string rip = Application.streamingAssetsPath + "/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
         //string rip = Application.streamingAssetsPath + "/TestingPurposes.osu";
+        
         ReadCircles(rip);
     }
 
