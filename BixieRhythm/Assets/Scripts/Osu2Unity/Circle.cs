@@ -157,7 +157,6 @@ public class Circle : MonoBehaviour
 
                     gameObject.transform.position = new Vector2(-101, -101);
                     this.enabled = false;
-                    //Debug.Log("MISSED IT");
                 }
             }
         }

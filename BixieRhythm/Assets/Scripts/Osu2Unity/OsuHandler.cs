@@ -105,7 +105,7 @@ public class OsuHandler : MonoBehaviour
         StreamReader reader = new StreamReader(path);
         string line;
 
-        // Skip to [HitObjects] part
+        // Skip to [HitObjects]
         while(true)
         {
             if (reader.ReadLine() == "[HitObjects]")
@@ -214,7 +214,7 @@ public class OsuHandler : MonoBehaviour
 	
     private void GameStart()
     {
-        Application.targetFrameRate = 60; // Unlimited framerate
+        Application.targetFrameRate = 60; // Target Framerate
         Music.Play();
         StartCoroutine(UpdateRoutine()); // Using coroutine instead of Update()
     }
