@@ -134,6 +134,7 @@ public class Circle : MonoBehaviour
             // If circle wasn't clicked
             else
             {
+                
                 box.enabled = false;
                 MainColor1.a -= 10f * Time.deltaTime;
                 MainColor2.a -= 10f * Time.deltaTime;
@@ -153,6 +154,7 @@ public class Circle : MonoBehaviour
 
                     GameObject missObj = Instantiate(missObject) as GameObject;
                     missObj.transform.position = this.transform.position;
+                    gameManager.ChangePortrait("Bad", 1);
                     gameManager.GLOBAL_noteMissed();
 
                     gameObject.transform.position = new Vector2(-101, -101);

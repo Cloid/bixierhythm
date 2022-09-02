@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         HPText.text = "" + currentPlayerHP;
         GHIsOnChord = false;
         tutorialTime = Time.unscaledTime;
+
         if (isTutorialActive)
         {
             Tutorial = GameObject.Find("Tutorial");
@@ -171,8 +172,10 @@ public class GameManager : MonoBehaviour
 
             if (multThreshold[currGHMultiplier - 1] <= multGHTracker)
             {
+                //ChangePortrait("Perfect", 1);
                 currGHMultiplier++;
                 multGHTracker = 0;
+
                 //Debug.Log("You advanced to next multiplier!");
             }
         }
@@ -189,7 +192,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Helper function that changes portrait sprite based on game state (notes missed or combos)
-    private void ChangePortrait(string portraitCase, int playerType)
+    public void ChangePortrait(string portraitCase, int playerType)
     {
         // Gets current portrait based on note feedback and whether it is Qinyang or Mei Lien that is reacting
         switch (portraitCase)
@@ -307,6 +310,7 @@ public class GameManager : MonoBehaviour
         multGHTracker = 0;
         GHComboText.text = "Combo: " + multGHTracker;
         multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        //ChangePortrait("Bad", 1);
 
         if(currentPlayerHP > 0)
         {

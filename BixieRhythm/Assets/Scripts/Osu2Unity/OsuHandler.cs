@@ -282,6 +282,7 @@ public class OsuHandler : MonoBehaviour
 
                         gameManager.currentGHScore += scorePerGoodNote;
                         gameManager.GLOBAL_noteHit();
+                        gameManager.ChangePortrait("Normal", 1);
                         scoreText.text = "Score: " + currentScore;
 
                         GameObject goodObj = Instantiate(goodObject) as GameObject;
@@ -306,6 +307,7 @@ public class OsuHandler : MonoBehaviour
 
                         gameManager.currentGHScore += scorePerBadNote;
                         gameManager.GLOBAL_noteHit();
+                        gameManager.ChangePortrait("Normal", 1);
                         scoreText.text = "Score: " + currentScore;
 
                         GameObject poorObj = Instantiate(poorObject) as GameObject;
@@ -327,6 +329,7 @@ public class OsuHandler : MonoBehaviour
                                 //"\nAdditive: " + (MainHit.collider.gameObject.GetComponent<Circle>().PosA + ApprRate));
                         //Debug.Log("PERFECT");
                         //multHelper("add");
+                        gameManager.ChangePortrait("Perfect", 1);
 
                         gameManager.currentGHScore += scorePerPerfectNote;
                         gameManager.GLOBAL_noteHit();
