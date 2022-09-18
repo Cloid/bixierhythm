@@ -198,6 +198,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135904791}
   m_CullTransparentMesh: 1
+--- !u!1001 &153125747
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1424401794}
+    m_Modifications:
+    - target: {fileID: 7015403654991017526, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_Name
+      value: QinyangModelV2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
 --- !u!1 &210872243
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +671,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &412976811 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7642723848345300108, guid: 49581859ba9f1684ea5638695c9ba680, type: 3}
+  m_PrefabInstance: {fileID: 153125747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &538140407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1841,9 @@ MonoBehaviour:
   MissedNote: {fileID: 7402875657515216737, guid: a139bb8490ee61344b92ac13f8a4d2e7, type: 3}
   GHPlayer: {fileID: 1424401790}
   GHIsOnChord: 0
+  isTutorialActive: 0
+  isGamePaused: 0
+  currentGHScore: 0
 --- !u!1 &1405421912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,6 +1983,7 @@ Transform:
   - {fileID: 1502952193}
   - {fileID: 619968581}
   - {fileID: 210872244}
+  - {fileID: 412976811}
   - {fileID: 543450652715196986}
   - {fileID: 2032031564}
   m_Father: {fileID: 0}
@@ -2983,7 +3049,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1424401794}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2032031565
 BoxCollider:
@@ -3213,9 +3279,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: QinyangModel
       objectReference: {fileID: 0}
+    - target: {fileID: 4739819924391291270, guid: 44e5050be538a1d43a479a9bb1a89a4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5371925429178938172, guid: 44e5050be538a1d43a479a9bb1a89a4b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5371925429178938172, guid: 44e5050be538a1d43a479a9bb1a89a4b, type: 3}
       propertyPath: m_LocalPosition.x
