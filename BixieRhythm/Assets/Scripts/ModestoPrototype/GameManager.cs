@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
         {
             Tutorial = GameObject.Find("Tutorial");
             Continue = GameObject.Find("Continue");
+            Debug.Log("Tutorial is active");
+        } else
+        {
+            Debug.Log("Tutorial is not active");
         }
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
@@ -93,6 +97,7 @@ public class GameManager : MonoBehaviour
             PauseGame();
             Tutorial.SetActive(false);
             Continue.SetActive(false);
+            Debug.Log("Tutorial has been deactivated");
         }
     }
 
