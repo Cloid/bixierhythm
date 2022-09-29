@@ -1382,7 +1382,7 @@ GameObject:
   - component: {fileID: 819934435}
   - component: {fileID: 819934436}
   m_Layer: 0
-  m_Name: BG Audio Test
+  m_Name: BG Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1412,7 +1412,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 47d5f114b6eeb1f4e9dabd79c59c74a9, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3a884056ce2588f4f85fd14309731a52, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7e1e5043a35d62e4881f324d59d9c6a6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -3507,10 +3507,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1186982128}
   m_HandleRect: {fileID: 1090187621}
   m_Direction: 0
-  m_MinValue: -60
+  m_MinValue: -50
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: -30
+  m_Value: -25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

@@ -13,11 +13,11 @@ public class SettingsMenu : MonoBehaviour
     {
         audioMixerMain.SetFloat("Volume", volume);
         //audioMixerSFX.SetFloat("Volume", volume);
-        if(volume >-60){
+        if(volume >-49){
             audioMixerMain.SetFloat("Volume", volume);
 
         }
-        else if(volume <= -60){
+        else if(volume <= -50){
             audioMixerMain.SetFloat("Volume", -80);
         }
         
