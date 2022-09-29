@@ -548,7 +548,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: fc2f50ac5b1075d47a8d45b7f3b075c5, type: 2}
   m_audioClip: {fileID: 8300000, guid: b8d3f47579d011e4694447b4a592b723, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1414,7 +1414,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 47d5f114b6eeb1f4e9dabd79c59c74a9, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3a884056ce2588f4f85fd14309731a52, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1675,8 +1675,8 @@ RectTransform:
   m_Father: {fileID: 1014337144}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -3, y: 8.5}
   m_SizeDelta: {x: 28, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1786,8 +1786,8 @@ RectTransform:
   m_Father: {fileID: 221685000}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -3, y: 8.5}
   m_SizeDelta: {x: 28, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1912,10 +1912,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1387902031}
   m_HandleRect: {fileID: 952605673}
   m_Direction: 0
-  m_MinValue: -20
-  m_MaxValue: 20
+  m_MinValue: -40
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: -15
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1939,7 +1939,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.5
+          m_FloatArgument: 0.3
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -1976,7 +1976,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2290,7 +2290,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2520,7 +2520,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: fc2f50ac5b1075d47a8d45b7f3b075c5, type: 2}
   m_audioClip: {fileID: 8300000, guid: e1b6227d5a5f10845ba803051e8b3b0b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3172,7 +3172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: fc2f50ac5b1075d47a8d45b7f3b075c5, type: 2}
   m_audioClip: {fileID: 8300000, guid: c72134196a5509541827aee79f6247a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3507,10 +3507,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1186982128}
   m_HandleRect: {fileID: 1090187621}
   m_Direction: 0
-  m_MinValue: -40
+  m_MinValue: -60
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: -10
+  m_Value: -30
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3534,7 +3534,7 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 0.5
+          m_FloatArgument: 0.3
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
