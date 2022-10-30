@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        GHScoreText.text = "Score: " + currentGHScore;
+        GHScoreText.text = currentGHScore.ToString();
         currGHMultiplier = 1;
-        multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        multiplierText.text = currGHMultiplier.ToString();
         multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
         GHIsOnChord = false;
@@ -150,10 +150,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GHComboText.text = "Combo: " + multGHTracker;
-        multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        GHComboText.text = multGHTracker.ToString();
+        multiplierText.text =  currGHMultiplier.ToString();
         currentGHScore += scorePerNote * currGHMultiplier;
-        GHScoreText.text = "Score: " + currentGHScore;
+        GHScoreText.text = currentGHScore.ToString();
 
         if(currentPlayerHP < 100)
         {
@@ -177,9 +177,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GHComboText.text = "Combo: " + multGHTracker;
-        multiplierText.text = "Multiplier: x" + currGHMultiplier;
-        GHScoreText.text = "Score: " + currentGHScore;
+        GHComboText.text =multGHTracker.ToString();
+        multiplierText.text = currGHMultiplier.ToString();
+        GHScoreText.text = currentGHScore.ToString();
 
         if(currentPlayerHP < 100)
         {
@@ -305,8 +305,8 @@ public class GameManager : MonoBehaviour
     public void GLOBAL_noteMissed(){
         currGHMultiplier = 1;
         multGHTracker = 0;
-        GHComboText.text = "Combo: " + multGHTracker;
-        multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        GHComboText.text = multGHTracker.ToString();
+        multiplierText.text = currGHMultiplier.ToString();
 
         if(currentPlayerHP > 0)
         {
