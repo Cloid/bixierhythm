@@ -316,6 +316,7 @@ public class GameManager : MonoBehaviour
         GHComboText.text = "Combo: " + multGHTracker;
         multiplierText.text = "Multiplier: x" + currGHMultiplier;
         //ChangePortrait("Bad", 1);
+        
 
         if(currentPlayerHP > 0)
         {
