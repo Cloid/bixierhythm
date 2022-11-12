@@ -8825,7 +8825,7 @@ MonoBehaviour:
   accText: {fileID: 980113355}
   multiplierText: {fileID: 1987421086}
   MainMusic: {fileID: 8300000, guid: 827f502396029a647a3a155c27d9a02b, type: 3}
-  HitSound: {fileID: 8300000, guid: 59d4dc4b6f6d5084e9565dd47e737241, type: 3}
+  HitSound: {fileID: 8300000, guid: bac1e631f7a35034e859c038db210f2c, type: 3}
   scorePerBadNote: 50
   scorePerGoodNote: 150
   scorePerPerfectNote: 200
