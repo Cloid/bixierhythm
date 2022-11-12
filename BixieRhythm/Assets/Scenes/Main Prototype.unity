@@ -8595,8 +8595,8 @@ MonoBehaviour:
   MissedNote: {fileID: 7402875657515216737, guid: a139bb8490ee61344b92ac13f8a4d2e7, type: 3}
   GHPlayer: {fileID: 327439145}
   GHIsOnChord: 0
-  isTutorialActive: 0
-  isGamePaused: 0
+  isTutorialActive: 1
+  isGamePaused: 1
   currentGHScore: 0
 --- !u!1 &1891330935
 GameObject:
