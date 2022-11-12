@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        GHScoreText.text = currentGHScore.ToString();
+        GHScoreText.text = "Score: " + currentGHScore;
         currGHMultiplier = 1;
-        multiplierText.text = currGHMultiplier.ToString();
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
         multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
         GHIsOnChord = false;
@@ -72,10 +72,6 @@ public class GameManager : MonoBehaviour
         {
             Tutorial = GameObject.Find("Tutorial");
             Continue = GameObject.Find("Continue");
-            Debug.Log("Tutorial is active");
-        } else
-        {
-            Debug.Log("Tutorial is not active");
         }
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
@@ -98,7 +94,6 @@ public class GameManager : MonoBehaviour
             PauseGame();
             Tutorial.SetActive(false);
             Continue.SetActive(false);
-            Debug.Log("Tutorial has been deactivated");
         }
 
         if (Input.GetKey("escape"))
@@ -156,10 +151,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GHComboText.text = multGHTracker.ToString();
-        multiplierText.text =  currGHMultiplier.ToString();
+        GHComboText.text = "Combo: " + multGHTracker;
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
         currentGHScore += scorePerNote * currGHMultiplier;
-        GHScoreText.text = currentGHScore.ToString();
+        GHScoreText.text = "Score: " + currentGHScore;
 
         if(currentPlayerHP < 100)
         {
@@ -185,9 +180,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GHComboText.text =multGHTracker.ToString();
-        multiplierText.text = currGHMultiplier.ToString();
-        GHScoreText.text = currentGHScore.ToString();
+        GHComboText.text = "Combo: " + multGHTracker;
+        multiplierText.text = "Multiplier: x" + currGHMultiplier;
+        GHScoreText.text = "Score: " + currentGHScore;
 
         if(currentPlayerHP < 100)
         {
@@ -316,7 +311,6 @@ public class GameManager : MonoBehaviour
         GHComboText.text = "Combo: " + multGHTracker;
         multiplierText.text = "Multiplier: x" + currGHMultiplier;
         //ChangePortrait("Bad", 1);
-        
 
         if(currentPlayerHP > 0)
         {
