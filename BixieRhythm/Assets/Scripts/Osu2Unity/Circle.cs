@@ -36,7 +36,7 @@ public class Circle : MonoBehaviour
         LanternRenderer = LanternGameObj.GetComponent<Renderer>();
 
         box = this.GetComponent<BoxCollider>();
-        OsuHandler = GameObject.Find("Script Handler").GetComponent<OsuHandler>();
+        OsuHandler = GameObject.Find("OsuManager").GetComponent<OsuHandler>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -89,7 +89,7 @@ public class Circle : MonoBehaviour
     // Check if circle wasn't clicked
     private IEnumerator Checker()
     {
-        while (true)
+        while (OsuHandler.timer/1000 + 5 < OsuHandler.Music.clip.length)
         {
             if (OsuHandler.timer >= PosA + (OsuHandler.ApprRate + OsuHandler.timeAfterDeath) && !GotIt)
             {

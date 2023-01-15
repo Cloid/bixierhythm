@@ -11,6 +11,10 @@ using System.Text.RegularExpressions;
 public class OsuHandler : MonoBehaviour
 {
     // ----------------------------------------------------------------------------
+    [Header("Beat Map")]
+    public string SongFileName;
+    public AudioClip MainMusic; // Music file, attach from editor
+    public AudioClip HitSound; // Hit sound
 
     [Header("Objects")]
     public GameObject Circle; // Circle Object
@@ -22,12 +26,6 @@ public class OsuHandler : MonoBehaviour
     public Text scoreText;
     public Text accText;
     public Text multiplierText;
-
-    [Header("Map")]
-    //public TextAsset MapFile; // Map file (.osu format), attach from editor
-    //var MapFile = Resources.Load<DefaultAsset>("yoshi");
-    public AudioClip MainMusic; // Music file, attach from editor
-    public AudioClip HitSound; // Hit sound
     
 
     // ----------------------------------------------------------------------------
@@ -48,7 +46,7 @@ public class OsuHandler : MonoBehaviour
 
     // Audio stuff
     private AudioSource Sounds;
-    private AudioSource Music;
+    public AudioSource Music;
     public static AudioSource pSounds;
     public static AudioClip pHitSound;
 
@@ -93,7 +91,7 @@ public class OsuHandler : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //string rip = "Assets/Resources/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
-        string rip = Application.streamingAssetsPath + "/Dallas Truong - Bixie Track 1 (Niko Sanchez) [Normal].osu";
+        string rip = Application.streamingAssetsPath + "/" + SongFileName;
         //string rip = Application.streamingAssetsPath + "/TestingPurposes.osu";
         
         ReadCircles(rip);
