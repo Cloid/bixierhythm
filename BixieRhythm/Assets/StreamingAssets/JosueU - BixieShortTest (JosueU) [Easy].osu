@@ -1,0 +1,58 @@
+osu file format v14
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: -1
+Countdown: 0
+SampleSet: Normal
+StackLeniency: 0.7
+Mode: 0
+LetterboxInBreaks: 0
+WidescreenStoryboard: 0
+
+[Editor]
+DistanceSpacing: 0.8
+BeatDivisor: 8
+GridSize: 32
+TimelineZoom: 1.2
+
+[Metadata]
+Title:BixieShortTest
+TitleUnicode:BixieShortTest
+Artist:JosueU
+ArtistUnicode:JosueU
+Creator:JosueU
+Version:Easy
+Source:Bixie
+Tags:
+BeatmapID:0
+BeatmapSetID:-1
+
+[Difficulty]
+HPDrainRate:5
+CircleSize:5
+OverallDifficulty:5
+ApproachRate:5
+SliderMultiplier:1.4
+SliderTickRate:1
+
+[Events]
+//Background and Video events
+0,0,"unknown.png",0,0
+//Break Periods
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Layer 4 (Overlay)
+//Storyboard Sound Samples
+
+[TimingPoints]
+3814,459.488436207689,4,1,0,100,1,0
+
+
+[HitObjects]
+96,32,3067,5,0,0:0:0:0:
+160,32,3297,1,0,0:0:0:0:
+192,32,3470,1,14,0:0:0:0:
