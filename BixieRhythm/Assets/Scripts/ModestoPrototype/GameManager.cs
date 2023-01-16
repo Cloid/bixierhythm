@@ -60,9 +60,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        GHScoreText.text = currentGHScore.ToString();
+        GHScoreText.text = "Score: " + currentGHScore.ToString();
         currGHMultiplier = 1;
-        multiplierText.text = currGHMultiplier.ToString();
+        multiplierText.text = "Multiplier: x" +currGHMultiplier.ToString();
         multThreshold = new int[3] {2, 4, 8};
         HPText.text = "" + currentPlayerHP;
         GHIsOnChord = false;
@@ -72,10 +72,10 @@ public class GameManager : MonoBehaviour
         {
             Tutorial = GameObject.Find("Tutorial");
             Continue = GameObject.Find("Continue");
-            Debug.Log("Tutorial is active");
+            //Debug.Log("Tutorial is active");
         } else
         {
-            Debug.Log("Tutorial is not active");
+            //Debug.Log("Tutorial is not active");
         }
 
         //  Note Accuracy -  This is delayed with a coroutine because the notes spawn after the first frame
@@ -156,10 +156,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GHComboText.text = multGHTracker.ToString();
-        multiplierText.text =  currGHMultiplier.ToString();
+        GHComboText.text = "Combo: " + multGHTracker.ToString();
+        multiplierText.text =  "Multiplier: x" + currGHMultiplier.ToString();
         currentGHScore += scorePerNote * currGHMultiplier;
-        GHScoreText.text = currentGHScore.ToString();
+        GHScoreText.text = "Score: " + currentGHScore.ToString();
 
         if(currentPlayerHP < 100)
         {
@@ -185,9 +185,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        GHComboText.text =multGHTracker.ToString();
-        multiplierText.text = currGHMultiplier.ToString();
-        GHScoreText.text = currentGHScore.ToString();
+        GHComboText.text = "Combo: " + multGHTracker.ToString();
+        multiplierText.text = "Multiplier: x" + currGHMultiplier.ToString();
+        GHScoreText.text = "Score: " + currentGHScore.ToString();
 
         if(currentPlayerHP < 100)
         {
@@ -289,7 +289,6 @@ public class GameManager : MonoBehaviour
     private void noteFeedbackTranslate(GameObject clone)
     {
         clone.GetComponent<Rigidbody>().AddForce((Vector3.forward) + (Vector3.up * 0.5f), ForceMode.Impulse);
-        //Debug.Log(clone.GetComponent<Rigidbody>().velocity);
     }
 
     // If a player misses a note, then the HP count is decreased.
