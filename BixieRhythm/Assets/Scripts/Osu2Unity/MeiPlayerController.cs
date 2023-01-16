@@ -34,7 +34,8 @@ public class MeiPlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddRelativeForce((MousePosition-transform.position).normalized * MoveSpeed * Time.deltaTime);
-        Quaternion target = Quaternion.Euler(0, 0, -rb.velocity.x);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * RotationSpeed);
+        Quaternion xRot_target = Quaternion.Euler(0, 0, -rb.velocity.x);
+        Quaternion yRot_target = Quaternion.Euler(-rb.velocity.y, 0, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, xRot_target * yRot_target, Time.deltaTime * RotationSpeed);
     }
 }
